@@ -5330,3 +5330,13 @@
 
     goto :goto_0
 .end method
+
+
+.method getContext()Landroid/app/ContextImpl;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
+
+    return-object v0
+.end method

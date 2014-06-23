@@ -1,0 +1,38 @@
+***************
+*** 265,270 ****
+  
+      iput-boolean v0, p0, Landroid/net/wifi/WifiInfo;->mMeteredHint:Z
+  
+      :cond_0
+      return-void
+  .end method
+--- 267,276 ----
+  
+      iput-boolean v0, p0, Landroid/net/wifi/WifiInfo;->mMeteredHint:Z
+  
++     iget-object v0, p1, Landroid/net/wifi/WifiInfo;->mVendorInfo:Ljava/lang/String;
++ 
++     iput-object v0, p0, Landroid/net/wifi/WifiInfo;->mVendorInfo:Ljava/lang/String;
++ 
+      :cond_0
+      return-void
+  .end method
+***************
+*** 1052,1057 ****
+      :goto_2
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+  
+      iget-object v0, p0, Landroid/net/wifi/WifiInfo;->mSupplicantState:Landroid/net/wifi/SupplicantState;
+  
+      invoke-virtual {v0, p1, p2}, Landroid/net/wifi/SupplicantState;->writeToParcel(Landroid/os/Parcel;I)V
+--- 1077,1086 ----
+      :goto_2
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+  
++     iget-object v0, p0, Landroid/net/wifi/WifiInfo;->mVendorInfo:Ljava/lang/String;
++ 
++     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
++ 
+      iget-object v0, p0, Landroid/net/wifi/WifiInfo;->mSupplicantState:Landroid/net/wifi/SupplicantState;
+  
+      invoke-virtual {v0, p1, p2}, Landroid/net/wifi/SupplicantState;->writeToParcel(Landroid/os/Parcel;I)V

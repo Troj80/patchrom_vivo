@@ -556,7 +556,7 @@
     goto :goto_0
 .end method
 
-.method private static final applyLink(Ljava/lang/String;IILandroid/text/Spannable;)V
+.method public static final applyLink(Ljava/lang/String;IILandroid/text/Spannable;)V
     .locals 2
     .parameter "url"
     .parameter "start"
@@ -579,7 +579,7 @@
     return-void
 .end method
 
-.method private static final gatherLinks(Ljava/util/ArrayList;Landroid/text/Spannable;Ljava/util/regex/Pattern;[Ljava/lang/String;Landroid/text/util/Linkify$MatchFilter;Landroid/text/util/Linkify$TransformFilter;)V
+.method public static final gatherLinks(Ljava/util/ArrayList;Landroid/text/Spannable;Ljava/util/regex/Pattern;[Ljava/lang/String;Landroid/text/util/Linkify$MatchFilter;Landroid/text/util/Linkify$TransformFilter;)V
     .locals 6
     .parameter
     .parameter "s"
@@ -592,7 +592,7 @@
             "(",
             "Ljava/util/ArrayList",
             "<",
-            "Landroid/text/util/LinkSpec;",
+            "Landroid/text/util/Linkify$LinkSpec;",
             ">;",
             "Landroid/text/Spannable;",
             "Ljava/util/regex/Pattern;",
@@ -693,7 +693,7 @@
             "(",
             "Ljava/util/ArrayList",
             "<",
-            "Landroid/text/util/LinkSpec;",
+            "Landroid/text/util/Linkify$LinkSpec;",
             ">;",
             "Landroid/text/Spannable;",
             ")V"
@@ -804,7 +804,7 @@
 
     move-result-object v9
 
-    iput-object v9, v6, Landroid/text/util/LinkSpec;->url:Ljava/lang/String;
+    iput-object v9, v6, Landroid/text/util/Linkify$LinkSpec;->url:Ljava/lang/String;
 
     .line 493
     invoke-virtual {p0, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -829,7 +829,7 @@
             "(",
             "Ljava/util/ArrayList",
             "<",
-            "Landroid/text/util/LinkSpec;",
+            "Landroid/text/util/Linkify$LinkSpec;",
             ">;",
             "Landroid/text/Spannable;",
             ")V"
@@ -1087,7 +1087,7 @@
     goto :goto_0
 .end method
 
-.method private static final pruneOverlaps(Ljava/util/ArrayList;)V
+.method public static final pruneOverlaps(Ljava/util/ArrayList;)V
     .locals 9
     .parameter
     .annotation system Ldalvik/annotation/Signature;
@@ -1190,15 +1190,15 @@
 
     .line 537
     :cond_1
-    iget v6, v0, Landroid/text/util/LinkSpec;->end:I
+    iget v6, v0, Landroid/text/util/Linkify$LinkSpec;->end:I
 
-    iget v7, v0, Landroid/text/util/LinkSpec;->start:I
+    iget v7, v0, Landroid/text/util/Linkify$LinkSpec;->start:I
 
     sub-int/2addr v6, v7
 
-    iget v7, v1, Landroid/text/util/LinkSpec;->end:I
+    iget v7, v1, Landroid/text/util/Linkify$LinkSpec;->end:I
 
-    iget v8, v1, Landroid/text/util/LinkSpec;->start:I
+    iget v8, v1, Landroid/text/util/Linkify$LinkSpec;->start:I
 
     sub-int/2addr v7, v8
 
@@ -1211,15 +1211,15 @@
 
     .line 539
     :cond_2
-    iget v6, v0, Landroid/text/util/LinkSpec;->end:I
+    iget v6, v0, Landroid/text/util/Linkify$LinkSpec;->end:I
 
-    iget v7, v0, Landroid/text/util/LinkSpec;->start:I
+    iget v7, v0, Landroid/text/util/Linkify$LinkSpec;->start:I
 
     sub-int/2addr v6, v7
 
-    iget v7, v1, Landroid/text/util/LinkSpec;->end:I
+    iget v7, v1, Landroid/text/util/Linkify$LinkSpec;->end:I
 
-    iget v8, v1, Landroid/text/util/LinkSpec;->start:I
+    iget v8, v1, Landroid/text/util/Linkify$LinkSpec;->start:I
 
     sub-int/2addr v7, v8
 

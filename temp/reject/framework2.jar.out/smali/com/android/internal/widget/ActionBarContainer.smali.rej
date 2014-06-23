@@ -1,0 +1,19 @@
+***************
+*** 398,403 ****
+      .parameter "b"
+  
+      .prologue
+      invoke-super/range {p0 .. p5}, Landroid/widget/FrameLayout;->onLayout(ZIIII)V
+  
+      iget-object v4, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+--- 416,425 ----
+      .parameter "b"
+  
+      .prologue
++     invoke-virtual/range {p0 .. p5}, Lcom/android/internal/widget/ActionBarContainer;->Miui_onLayout(ZIIII)V
++ 
++     return-void
++ 
+      invoke-super/range {p0 .. p5}, Landroid/widget/FrameLayout;->onLayout(ZIIII)V
+  
+      iget-object v4, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;

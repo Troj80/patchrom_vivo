@@ -1,0 +1,17 @@
+***************
+*** 300,306 ****
+  
+      if-eqz v1, :cond_2
+  
+!     invoke-direct {p0, v1}, Landroid/widget/ProgressBar;->tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+  
+      move-result-object v1
+  
+--- 300,306 ----
+  
+      if-eqz v1, :cond_2
+  
+!     invoke-virtual {p0, v1}, Landroid/widget/ProgressBar;->tileifyIndeterminate(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+  
+      move-result-object v1
+  

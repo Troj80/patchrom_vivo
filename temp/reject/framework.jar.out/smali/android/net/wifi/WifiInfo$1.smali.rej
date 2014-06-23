@@ -1,0 +1,21 @@
+***************
+*** 134,139 ****
+      #setter for: Landroid/net/wifi/WifiInfo;->mMeteredHint:Z
+      invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$302(Landroid/net/wifi/WifiInfo;Z)Z
+  
+      sget-object v1, Landroid/net/wifi/SupplicantState;->CREATOR:Landroid/os/Parcelable$Creator;
+  
+      invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+--- 134,145 ----
+      #setter for: Landroid/net/wifi/WifiInfo;->mMeteredHint:Z
+      invoke-static {v0, v1}, Landroid/net/wifi/WifiInfo;->access$302(Landroid/net/wifi/WifiInfo;Z)Z
+  
++     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
++ 
++     move-result-object v1
++ 
++     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiInfo;->setVendorInfo(Ljava/lang/String;)V
++ 
+      sget-object v1, Landroid/net/wifi/SupplicantState;->CREATOR:Landroid/os/Parcelable$Creator;
+  
+      invoke-interface {v1, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;

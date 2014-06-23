@@ -1,0 +1,17 @@
+***************
+*** 1966,1971 ****
+      .parameter "ellipsize"
+  
+      .prologue
+      const/4 v5, 0x0
+  
+      move-object/from16 v0, p0
+--- 1981,1988 ----
+      .parameter "ellipsize"
+  
+      .prologue
++     invoke-static {}, Landroid/text/Injector$StaticLayoutHook;->before_generate()V
++ 
+      const/4 v5, 0x0
+  
+      move-object/from16 v0, p0

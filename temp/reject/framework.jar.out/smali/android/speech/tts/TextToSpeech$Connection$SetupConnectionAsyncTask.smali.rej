@@ -1,0 +1,16 @@
+***************
+*** 178,183 ****
+  
+      invoke-virtual {v2, v4, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+  
+      const-string v2, "TextToSpeech"
+  
+      new-instance v4, Ljava/lang/StringBuilder;
+--- 180,186 ----
+  
+      invoke-virtual {v2, v4, v5}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+  
++     :cond_miui
+      const-string v2, "TextToSpeech"
+  
+      new-instance v4, Ljava/lang/StringBuilder;

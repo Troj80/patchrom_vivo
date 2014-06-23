@@ -1,0 +1,12 @@
+*** .//smali/android/preference/CheckBoxPreference.smali	2014-06-23 03:13:48.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/preference/CheckBoxPreference.smali	2014-06-23 03:11:30.000000000 +0300
+***************
+*** 109,113 ****
+--- 109,115 ----
+      :cond_0
+      invoke-virtual {p0, p1}, Landroid/preference/CheckBoxPreference;->syncSummaryView(Landroid/view/View;)V
+  
++     invoke-static {p0, v0}, Landroid/preference/Injector$CheckBoxPreferenceHook;->after_onBindView(Landroid/preference/CheckBoxPreference;Landroid/view/View;)V
++ 
+      return-void
+  .end method

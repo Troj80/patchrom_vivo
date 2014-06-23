@@ -1,0 +1,15 @@
+*** .//smali/com/android/server/am/BaseErrorDialog.smali	2014-06-23 03:14:45.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/services.jar.out/.//smali/com/android/server/am/BaseErrorDialog.smali	2014-06-23 03:12:22.000000000 +0300
+***************
+*** 19,24 ****
+--- 19,28 ----
+  
+      const v1, 0x1030307
+  
++     invoke-static {v1}, Lcom/android/server/am/Injector$BaseErrorDialogHook;->getTheme(I)I
++ 
++     move-result v1
++ 
+      invoke-direct {p0, p1, v1}, Landroid/app/AlertDialog;-><init>(Landroid/content/Context;I)V
+  
+      new-instance v1, Lcom/android/server/am/BaseErrorDialog$1;

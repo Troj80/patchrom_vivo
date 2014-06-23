@@ -1,0 +1,34 @@
+***************
+*** 668,673 ****
+      .parameter "window"
+  
+      .prologue
+      sget-object v1, Landroid/database/CursorWindow;->sWindowToPidMap:Landroid/util/SparseIntArray;
+  
+      monitor-enter v1
+--- 670,677 ----
+      .parameter "window"
+  
+      .prologue
++     invoke-static {p1}, Landroid/database/Injector$CursorWindowHook;->before_recordClosingOfWindow(I)V
++ 
+      sget-object v1, Landroid/database/CursorWindow;->sWindowToPidMap:Landroid/util/SparseIntArray;
+  
+      monitor-enter v1
+***************
+*** 711,716 ****
+      .parameter "window"
+  
+      .prologue
+      sget-object v1, Landroid/database/CursorWindow;->sWindowToPidMap:Landroid/util/SparseIntArray;
+  
+      monitor-enter v1
+--- 715,722 ----
+      .parameter "window"
+  
+      .prologue
++     invoke-static {p1, p2}, Landroid/database/Injector$CursorWindowHook;->before_recordNewWindow(II)V
++ 
+      sget-object v1, Landroid/database/CursorWindow;->sWindowToPidMap:Landroid/util/SparseIntArray;
+  
+      monitor-enter v1

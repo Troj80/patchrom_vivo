@@ -1,0 +1,19 @@
+*** .//smali/android/view/ScaleGestureDetector.smali	2014-06-23 03:14:15.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/view/ScaleGestureDetector.smali	2014-06-23 03:11:53.000000000 +0300
+***************
+*** 178,183 ****
+--- 178,191 ----
+      invoke-virtual {p0, v1}, Landroid/view/ScaleGestureDetector;->setQuickScaleEnabled(Z)V
+  
+      :cond_0
++     const/high16 v2, 0x7fc0
++ 
++     iput v2, p0, Landroid/view/ScaleGestureDetector;->mTouchUpper:F
++ 
++     iput v2, p0, Landroid/view/ScaleGestureDetector;->mTouchLower:F
++ 
++     iput v2, p0, Landroid/view/ScaleGestureDetector;->mTouchHistoryLastAccepted:F
++ 
+      return-void
+  
+      .end local v0           #res:Landroid/content/res/Resources;

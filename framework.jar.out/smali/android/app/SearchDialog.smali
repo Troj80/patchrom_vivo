@@ -819,6 +819,15 @@
     .line 266
     iget-object v1, p0, Landroid/app/SearchDialog;->mSearchable:Landroid/app/SearchableInfo;
 
+    invoke-static {p0}, Landroid/app/Injector$SearchDialogHook;->before_updateSearchAppIcon(Landroid/app/SearchDialog;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    return-void
+
+    :cond_0
     invoke-virtual {p0}, Landroid/app/SearchDialog;->getContext()Landroid/content/Context;
 
     move-result-object v2
@@ -1224,6 +1233,24 @@
 
 
 # virtual methods
+.method getAppIcon()Landroid/widget/ImageView;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/SearchDialog;->mAppIcon:Landroid/widget/ImageView;
+
+    return-object v0
+.end method
+
+.method getCloseSearch()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/SearchDialog;->mCloseSearch:Landroid/view/View;
+
+    return-object v0
+.end method
+
 .method public hide()V
     .locals 3
 

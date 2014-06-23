@@ -1,0 +1,19 @@
+***************
+*** 118,123 ****
+  
+      const/4 v3, 0x0
+  
+      new-array v0, v6, [F
+  
+      fill-array-data v0, :array_0
+--- 120,129 ----
+  
+      const/4 v3, 0x0
+  
++     const/high16 v0, 0x3f80
++ 
++     sput v0, Landroid/util/TypedValue;->miui_font_scale:F
++ 
+      new-array v0, v6, [F
+  
+      fill-array-data v0, :array_0

@@ -1,0 +1,19 @@
+***************
+*** 2295,2300 ****
+      .parameter "userData"
+  
+      .prologue
+      invoke-static {p0}, Landroid/telephony/PhoneNumberUtils;->cdmaCheckAndProcessPlusCodeForSms(Ljava/lang/String;)Ljava/lang/String;
+  
+      move-result-object v9
+--- 2301,2310 ----
+      .parameter "userData"
+  
+      .prologue
++     invoke-static {p0}, Lmiui/telephony/PhoneNumberUtils$PhoneNumber;->replaceCdmaInternationalAccessCode(Ljava/lang/String;)Ljava/lang/String;
++ 
++     move-result-object p0
++ 
+      invoke-static {p0}, Landroid/telephony/PhoneNumberUtils;->cdmaCheckAndProcessPlusCodeForSms(Ljava/lang/String;)Ljava/lang/String;
+  
+      move-result-object v9

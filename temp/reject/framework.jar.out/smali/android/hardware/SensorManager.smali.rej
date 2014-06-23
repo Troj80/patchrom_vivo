@@ -1,0 +1,19 @@
+***************
+*** 229,234 ****
+      .parameter "p"
+  
+      .prologue
+      const v0, 0x3e42dcae
+  
+      .local v0, coef:F
+--- 229,238 ----
+      .parameter "p"
+  
+      .prologue
++     invoke-static {p0}, Landroid/hardware/Injector$SensorManagerHook;->getSeaLevelPressure(F)F
++ 
++     move-result p0
++ 
+      const v0, 0x3e42dcae
+  
+      .local v0, coef:F

@@ -1,0 +1,17 @@
+***************
+*** 472,477 ****
+      :cond_6
+      invoke-static {v6}, Ljava/util/Arrays;->sort([Ljava/lang/Object;)V
+  
+      const-string v2, "layout_inflater"
+  
+      move-object/from16 v0, p0
+--- 472,479 ----
+      :cond_6
+      invoke-static {v6}, Ljava/util/Arrays;->sort([Ljava/lang/Object;)V
+  
++     invoke-static {v6}, Lcom/android/internal/app/Injector$LocalePickerHook;->adjustLocaleOrder([Lcom/android/internal/app/LocalePicker$LocaleInfo;)V
++ 
+      const-string v2, "layout_inflater"
+  
+      move-object/from16 v0, p0

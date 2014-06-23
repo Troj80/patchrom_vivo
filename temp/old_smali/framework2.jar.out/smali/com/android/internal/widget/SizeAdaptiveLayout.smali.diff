@@ -1,0 +1,15 @@
+*** .//smali/com/android/internal/widget/SizeAdaptiveLayout.smali	2014-06-23 03:14:41.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework2.jar.out/.//smali/com/android/internal/widget/SizeAdaptiveLayout.smali	2014-06-23 03:12:18.000000000 +0300
+***************
+*** 431,436 ****
+--- 431,440 ----
+  
+      const/high16 v4, -0x100
+  
++     invoke-static {v4}, Lcom/android/internal/widget/Injector$SizeAdaptiveLayoutHook;->getModestyPanelBackgroundColor(I)I
++ 
++     move-result v4
++ 
+      invoke-virtual {v3, v4}, Landroid/view/View;->setBackgroundColor(I)V
+  
+      goto :goto_0

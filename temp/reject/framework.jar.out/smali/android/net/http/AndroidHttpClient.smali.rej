@@ -1,0 +1,19 @@
+***************
+*** 475,480 ****
+  
+      const v8, 0xea60
+  
+      new-instance v1, Lorg/apache/http/params/BasicHttpParams;
+  
+      invoke-direct {v1}, Lorg/apache/http/params/BasicHttpParams;-><init>()V
+--- 475,484 ----
+  
+      const v8, 0xea60
+  
++     invoke-static {p0, p1}, Landroid/net/http/Injector$AndroidHttpClientHook;->before_newInstance(Ljava/lang/String;Landroid/content/Context;)Ljava/lang/String;
++ 
++     move-result-object p0
++ 
+      new-instance v1, Lorg/apache/http/params/BasicHttpParams;
+  
+      invoke-direct {v1}, Lorg/apache/http/params/BasicHttpParams;-><init>()V

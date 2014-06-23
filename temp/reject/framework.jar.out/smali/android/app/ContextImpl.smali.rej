@@ -1,0 +1,86 @@
+***************
+*** 518,523 ****
+  
+      invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
+  
+      return-void
+  .end method
+  
+--- 518,525 ----
+  
+      invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
+  
++     invoke-static {}, Landroid/app/ContextImpl;->registerMiuiServices()V
++ 
+      return-void
+  .end method
+  
+***************
+*** 3061,3066 ****
+  
+      iput-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
+      return-object v6
+  .end method
+  
+--- 3080,3093 ----
+  
+      iput-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
++     iget-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
++ 
++     iget-object v1, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
++ 
++     iget-object v1, v1, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
++ 
++     invoke-static {v0, v1}, Landroid/app/Injector$ActivityThreadHook;->setResourcesPackageName(Landroid/content/res/Resources;Ljava/lang/String;)V
++ 
+      return-object v6
+  .end method
+  
+***************
+*** 3125,3130 ****
+  
+      iput-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
+      return-object v6
+  .end method
+  
+--- 3152,3165 ----
+  
+      iput-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
++     iget-object v0, v6, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
++ 
++     iget-object v1, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
++ 
++     iget-object v1, v1, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
++ 
++     invoke-static {v0, v1}, Landroid/app/Injector$ActivityThreadHook;->setResourcesPackageName(Landroid/content/res/Resources;Ljava/lang/String;)V
++ 
+      return-object v6
+  .end method
+  
+***************
+*** 4976,4981 ****
+  
+      iput-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
+      :goto_2
+      iput-object p3, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+  
+--- 5011,5024 ----
+  
+      iput-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
+  
++     iget-object v0, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
++ 
++     iget-object v1, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
++ 
++     iget-object v1, v1, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
++ 
++     invoke-static {v0, v1}, Landroid/app/Injector$ActivityThreadHook;->setResourcesPackageName(Landroid/content/res/Resources;Ljava/lang/String;)V
++ 
+      :goto_2
+      iput-object p3, p0, Landroid/app/ContextImpl;->mMainThread:Landroid/app/ActivityThread;
+  

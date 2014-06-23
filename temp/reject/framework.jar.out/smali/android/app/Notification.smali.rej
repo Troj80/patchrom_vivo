@@ -1,0 +1,99 @@
+***************
+*** 196,201 ****
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+--- 198,209 ----
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
++     new-instance v0, Lmiui/app/ExtraNotification;
++ 
++     invoke-direct {v0}, Lmiui/app/ExtraNotification;-><init>()V
++ 
++     iput-object v0, p0, Landroid/app/Notification;->extraNotification:Lmiui/app/ExtraNotification;
++ 
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+***************
+*** 230,235 ****
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+--- 238,249 ----
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
++     new-instance v0, Lmiui/app/ExtraNotification;
++ 
++     invoke-direct {v0}, Lmiui/app/ExtraNotification;-><init>()V
++ 
++     iput-object v0, p0, Landroid/app/Notification;->extraNotification:Lmiui/app/ExtraNotification;
++ 
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+***************
+*** 264,269 ****
+  
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+--- 278,289 ----
+  
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
++     new-instance v0, Lmiui/app/ExtraNotification;
++ 
++     invoke-direct {v0}, Lmiui/app/ExtraNotification;-><init>()V
++ 
++     iput-object v0, p0, Landroid/app/Notification;->extraNotification:Lmiui/app/ExtraNotification;
++ 
+      const/4 v0, -0x1
+  
+      iput v0, p0, Landroid/app/Notification;->audioStreamType:I
+***************
+*** 1464,1469 ****
+      iput-object v1, p0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
+  
+      :cond_8
+      return-void
+  .end method
+  
+--- 1490,1499 ----
+      iput-object v1, p0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
+  
+      :cond_8
++     iget-object v1, p0, Landroid/app/Notification;->extraNotification:Lmiui/app/ExtraNotification;
++ 
++     invoke-virtual {v1, p1}, Lmiui/app/ExtraNotification;->readFromParcel(Landroid/os/Parcel;)V
++ 
+      return-void
+  .end method
+  
+***************
+*** 1536,1541 ****
+  
+      invoke-virtual {p0, v0, v1}, Landroid/app/Notification;->cloneInto(Landroid/app/Notification;Z)V
+  
+      return-object v0
+  .end method
+  
+--- 1566,1573 ----
+  
+      invoke-virtual {p0, v0, v1}, Landroid/app/Notification;->cloneInto(Landroid/app/Notification;Z)V
+  
++     invoke-static {p0, v0}, Landroid/app/Injector$NotificationHook;->after_clone(Landroid/app/Notification;Landroid/app/Notification;)V
++ 
+      return-object v0
+  .end method
+  

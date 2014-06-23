@@ -1,0 +1,19 @@
+***************
+*** 1529,1534 ****
+      .parameter "attachToRoot"
+  
+      .prologue
+      invoke-virtual {p0}, Landroid/view/LayoutInflater;->getContext()Landroid/content/Context;
+  
+      move-result-object v1
+--- 1529,1538 ----
+      .parameter "attachToRoot"
+  
+      .prologue
++     invoke-static {p0, p1}, Landroid/view/Injector$LayoutInflaterHook;->before_inflate(Landroid/view/LayoutInflater;I)I
++ 
++     move-result p1
++ 
+      invoke-virtual {p0}, Landroid/view/LayoutInflater;->getContext()Landroid/content/Context;
+  
+      move-result-object v1

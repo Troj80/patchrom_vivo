@@ -1,0 +1,24 @@
+*** .//smali/android/content/pm/ResolveInfo$DisplayNameComparator.smali	2014-06-23 03:13:07.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/content/pm/ResolveInfo$DisplayNameComparator.smali	2014-06-23 03:10:49.000000000 +0300
+***************
+*** 66,71 ****
+--- 66,84 ----
+      .parameter "b"
+  
+      .prologue
++     invoke-static {p1, p2}, Landroid/content/pm/Injector$ResolveInfoHook$DisplayNameComparator;->before_compare(Landroid/content/pm/ResolveInfo;Landroid/content/pm/ResolveInfo;)I
++ 
++     move-result v0
++ 
++     .local v0, ret:I
++     if-eqz v0, :cond_miui
++ 
++     .end local v0           #ret:I
++     return v0
++ 
++     .restart local v0       #ret:I
++     :cond_miui
++ 
+      iget-object v2, p0, Landroid/content/pm/ResolveInfo$DisplayNameComparator;->mPM:Landroid/content/pm/PackageManager;
+  
+      invoke-virtual {p1, v2}, Landroid/content/pm/ResolveInfo;->loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;

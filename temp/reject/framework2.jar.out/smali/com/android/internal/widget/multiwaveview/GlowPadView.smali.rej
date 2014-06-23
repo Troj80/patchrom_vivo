@@ -1,0 +1,174 @@
+***************
+*** 662,668 ****
+      .parameter "x3"
+  
+      .prologue
+!     invoke-direct {p0, p1, p2, p3}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->switchToState(IFF)V
+  
+      return-void
+  .end method
+--- 662,668 ----
+      .parameter "x3"
+  
+      .prologue
+!     invoke-virtual {p0, p1, p2, p3}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->switchToState(IFF)V
+  
+      return-void
+  .end method
+***************
+*** 716,722 ****
+      .parameter "x2"
+  
+      .prologue
+!     invoke-direct {p0, p1, p2}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      return-void
+  .end method
+--- 716,722 ----
+      .parameter "x2"
+  
+      .prologue
+!     invoke-virtual {p0, p1, p2}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      return-void
+  .end method
+***************
+*** 1415,1421 ****
+  
+      invoke-direct {p0, v6, v3, v5, v4}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideGlow(IIFLandroid/animation/Animator$AnimatorListener;)V
+  
+!     invoke-direct {p0, v2, v3}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      goto :goto_1
+  .end method
+--- 1415,1421 ----
+  
+      invoke-direct {p0, v6, v3, v5, v4}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideGlow(IIFLandroid/animation/Animator$AnimatorListener;)V
+  
+!     invoke-virtual {p0, v2, v3}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      goto :goto_1
+  .end method
+***************
+*** 4836,4842 ****
+  
+      invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->deactivateTargets()V
+  
+!     invoke-direct {p0, v5}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->showTargets(Z)V
+  
+      const/16 v0, 0xc8
+  
+--- 4836,4842 ----
+  
+      invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->deactivateTargets()V
+  
+!     invoke-virtual {p0, v5}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->showTargets(Z)V
+  
+      const/16 v0, 0xc8
+  
+***************
+*** 5071,5082 ****
+      move-result v0
+  
+      .local v0, angle:F
+!     invoke-direct {p0, p1, p2, p3, v0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->updateTargetPosition(IFFF)V
+  
+      return-void
+  .end method
+  
+! .method private updateTargetPosition(IFFF)V
+      .locals 6
+      .parameter "i"
+      .parameter "centerX"
+--- 5071,5082 ----
+      move-result v0
+  
+      .local v0, angle:F
+!     invoke-virtual {p0, p1, p2, p3, v0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->updateTargetPosition(IFFF)V
+  
+      return-void
+  .end method
+  
+! .method updateTargetPosition(IFFF)V
+      .locals 6
+      .parameter "i"
+      .parameter "centerX"
+***************
+*** 5789,5795 ****
+  
+      const/4 v7, 0x0
+  
+!     invoke-direct {p0, v6, v7}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      const/4 v6, 0x0
+  
+--- 5974,5980 ----
+  
+      const/4 v7, 0x0
+  
+!     invoke-virtual {p0, v6, v7}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      const/4 v6, 0x0
+  
+***************
+*** 5913,5933 ****
+      :pswitch_1
+      invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleDown(Landroid/view/MotionEvent;)V
+  
+!     invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      const/4 v1, 0x1
+  
+      goto :goto_0
+  
+      :pswitch_2
+!     invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      const/4 v1, 0x1
+  
+      goto :goto_0
+  
+      :pswitch_3
+!     invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleUp(Landroid/view/MotionEvent;)V
+  
+--- 6098,6118 ----
+      :pswitch_1
+      invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleDown(Landroid/view/MotionEvent;)V
+  
+!     invoke-virtual {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      const/4 v1, 0x1
+  
+      goto :goto_0
+  
+      :pswitch_2
+!     invoke-virtual {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      const/4 v1, 0x1
+  
+      goto :goto_0
+  
+      :pswitch_3
+!     invoke-virtual {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleMove(Landroid/view/MotionEvent;)V
+  
+      invoke-direct {p0, p1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->handleUp(Landroid/view/MotionEvent;)V
+  
+***************
+*** 6248,6254 ****
+  
+      invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->stopAndHideWaveAnimation()V
+  
+!     invoke-direct {p0, p1, v1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      const/4 v0, 0x0
+  
+--- 6433,6439 ----
+  
+      invoke-direct {p0}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->stopAndHideWaveAnimation()V
+  
+!     invoke-virtual {p0, p1, v1}, Lcom/android/internal/widget/multiwaveview/GlowPadView;->hideTargets(ZZ)V
+  
+      const/4 v0, 0x0
+  

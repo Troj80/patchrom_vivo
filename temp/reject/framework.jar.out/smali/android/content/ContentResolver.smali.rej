@@ -1,0 +1,16 @@
+***************
+*** 4641,4646 ****
+      :cond_5
+      if-eqz v11, :cond_0
+  
+      move-object/from16 v0, p0
+  
+      invoke-virtual {v0, v11}, Landroid/content/ContentResolver;->releaseProvider(Landroid/content/IContentProvider;)Z
+--- 4643,4649 ----
+      :cond_5
+      if-eqz v11, :cond_0
+  
++     :goto_miui_1
+      move-object/from16 v0, p0
+  
+      invoke-virtual {v0, v11}, Landroid/content/ContentResolver;->releaseProvider(Landroid/content/IContentProvider;)Z

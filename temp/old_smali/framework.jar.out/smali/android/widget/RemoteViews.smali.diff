@@ -1,0 +1,45 @@
+*** .//smali/android/widget/RemoteViews.smali	2014-06-23 03:14:26.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/widget/RemoteViews.smali	2014-06-23 03:12:04.000000000 +0300
+***************
+*** 108,113 ****
+--- 108,115 ----
+  
+  .field private mBitmapCache:Landroid/widget/RemoteViews$BitmapCache;
+  
++ .field mDefaultTheme:I
++ 
+  .field private mIsRoot:Z
+  
+  .field private mIsWidgetCollectionChild:Z
+***************
+*** 1678,1683 ****
+--- 1680,1689 ----
+      move-result-object v0
+  
+      .local v0, c:Landroid/content/Context;
++     iget v4, p0, Landroid/widget/RemoteViews;->mDefaultTheme:I
++ 
++     invoke-virtual {v0, v4}, Landroid/content/Context;->setTheme(I)V
++ 
+      const-string v4, "layout_inflater"
+  
+      invoke-virtual {v0, v4}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+***************
+*** 2230,2235 ****
+--- 2236,2251 ----
+      return-void
+  .end method
+  
++ .method public setDefaultTheme(I)V
++     .locals 0
++     .parameter "id"
++ 
++     .prologue
++     iput p1, p0, Landroid/widget/RemoteViews;->mDefaultTheme:I
++ 
++     return-void
++ .end method
++ 
+  .method public setDisplayedChild(II)V
+      .locals 1
+      .parameter "viewId"

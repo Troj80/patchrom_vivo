@@ -1,0 +1,41 @@
+***************
+*** 542,547 ****
+  
+      const/high16 v11, 0x4000
+  
+      invoke-static {p2}, Landroid/view/View$MeasureSpec;->getMode(I)I
+  
+      move-result v7
+--- 570,584 ----
+  
+      const/high16 v11, 0x4000
+  
++     invoke-static {p0, p1, p2}, Lcom/android/internal/view/menu/Injector$ActionMenuItemViewHook;->before_onMeasure(Lcom/android/internal/view/menu/ActionMenuItemView;II)Z
++ 
++     move-result v7
++ 
++     if-eqz v7, :cond_miui
++ 
++     return-void
++ 
++     :cond_miui
+      invoke-static {p2}, Landroid/view/View$MeasureSpec;->getMode(I)I
+  
+      move-result v7
+***************
+*** 856,861 ****
+      .prologue
+      iput p1, p0, Lcom/android/internal/view/menu/ActionMenuItemView;->mSavedPaddingLeft:I
+  
+      invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/TextView;->setPadding(IIII)V
+  
+      return-void
+--- 893,900 ----
+      .prologue
+      iput p1, p0, Lcom/android/internal/view/menu/ActionMenuItemView;->mSavedPaddingLeft:I
+  
++     iput p3, p0, Lcom/android/internal/view/menu/ActionMenuItemView;->mSavedPaddingRight:I
++ 
+      invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/TextView;->setPadding(IIII)V
+  
+      return-void

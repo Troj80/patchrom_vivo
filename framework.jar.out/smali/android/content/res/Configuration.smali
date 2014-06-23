@@ -196,6 +196,14 @@
 
 .field public static final UI_MODE_TYPE_NORMAL:I = 0x1
 
+.field public static final UI_MODE_TYPE_SCALE_HUGE:I = 0xf
+
+.field public static final UI_MODE_TYPE_SCALE_LARGE:I = 0xe
+
+.field public static final UI_MODE_TYPE_SCALE_MEDIUM:I = 0xd
+
+.field public static final UI_MODE_TYPE_SCALE_SMALL:I = 0xc
+
 .field public static final UI_MODE_TYPE_TELEVISION:I = 0x4
 
 .field public static final UI_MODE_TYPE_UNDEFINED:I
@@ -211,6 +219,8 @@
 .field public customTheme:Landroid/content/res/CustomTheme;
 
 .field public densityDpi:I
+
+.field public extraConfig:Lmiui/content/res/ExtraConfiguration;
 
 .field public fontScale:F
 
@@ -355,8 +365,15 @@
 
     and-int/2addr v0, p0
 
+    if-nez v0, :cond_miui
+
+    invoke-static {p0}, Lmiui/content/res/ExtraConfiguration;->needNewResources(I)Z
+
+    move-result v0
+
     if-eqz v0, :cond_0
 
+    :cond_miui
     const/4 v0, 0x1
 
     :goto_0
@@ -824,6 +841,10 @@
     if-eqz v3, :cond_0
 
     move v2, v4
+
+    invoke-static {p0, v2, p1}, Landroid/content/res/Injector$ConfigurationHook;->compareTo(Landroid/content/res/Configuration;ILandroid/content/res/Configuration;)I
+
+    move-result v2
 
     goto/16 :goto_0
 
@@ -2441,6 +2462,10 @@
 
     .line 797
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {p0, v2}, Landroid/content/res/Injector$ConfigurationHook;->toString(Landroid/content/res/Configuration;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 

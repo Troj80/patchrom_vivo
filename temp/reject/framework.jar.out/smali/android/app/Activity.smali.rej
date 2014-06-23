@@ -1,0 +1,51 @@
+***************
+*** 3817,3822 ****
+  
+      iput-boolean v3, p0, Landroid/app/Activity;->mCalled:Z
+  
+      return-void
+  
+      :cond_3
+--- 3843,3850 ----
+  
+      iput-boolean v3, p0, Landroid/app/Activity;->mCalled:Z
+  
++     invoke-static {p0}, Landroid/app/Injector$ActivityHook;->after_onCreate(Landroid/app/Activity;)V
++ 
+      return-void
+  
+      :cond_3
+***************
+*** 5384,5389 ****
+  
+      iput-boolean v0, p0, Landroid/app/Activity;->mCalled:Z
+  
+      return-void
+  .end method
+  
+--- 5414,5421 ----
+  
+      iput-boolean v0, p0, Landroid/app/Activity;->mCalled:Z
+  
++     invoke-static {p0}, Landroid/app/Injector$ActivityHook;->after_onResume(Landroid/app/Activity;)V
++ 
+      return-void
+  .end method
+  
+***************
+*** 5876,5881 ****
+      .prologue
+      const/4 v2, 0x0
+  
+      iput-boolean v2, p0, Landroid/app/Activity;->mDoReportFullyDrawn:Z
+  
+      iget-object v0, p0, Landroid/app/Activity;->mFragments:Landroid/app/FragmentManagerImpl;
+--- 5908,5915 ----
+      .prologue
+      const/4 v2, 0x0
+  
++     invoke-static {p0}, Landroid/app/Injector$ActivityHook;->before_performPause(Landroid/app/Activity;)V
++ 
+      iput-boolean v2, p0, Landroid/app/Activity;->mDoReportFullyDrawn:Z
+  
+      iget-object v0, p0, Landroid/app/Activity;->mFragments:Landroid/app/FragmentManagerImpl;

@@ -1,0 +1,17 @@
+***************
+*** 140,145 ****
+  
+      const/4 v1, 0x0
+  
+      iget v3, p1, Landroid/os/Message;->what:I
+  
+      sparse-switch v3, :sswitch_data_0
+--- 140,147 ----
+  
+      const/4 v1, 0x0
+  
++     invoke-static {p1}, Landroid/net/wifi/Injector$WifiStateMachineHook$SupplicantStartedState;->processMessage(Landroid/os/Message;)V
++ 
+      iget v3, p1, Landroid/os/Message;->what:I
+  
+      sparse-switch v3, :sswitch_data_0

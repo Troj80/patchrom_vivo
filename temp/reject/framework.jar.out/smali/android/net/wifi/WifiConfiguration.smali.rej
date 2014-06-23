@@ -1,0 +1,58 @@
+***************
+*** 314,319 ****
+  
+      iput-object v1, p0, Landroid/net/wifi/WifiConfiguration;->preSharedKey:Ljava/lang/String;
+  
+      const/4 v1, 0x4
+  
+      new-array v1, v1, [Ljava/lang/String;
+--- 348,365 ----
+  
+      iput-object v1, p0, Landroid/net/wifi/WifiConfiguration;->preSharedKey:Ljava/lang/String;
+  
++     const/4 v0, 0x0
++ 
++     const/4 v1, -0x1
++ 
++     iput-object v0, p0, Landroid/net/wifi/WifiConfiguration;->wapiASCert:Ljava/lang/String;
++ 
++     iput-object v0, p0, Landroid/net/wifi/WifiConfiguration;->wapiUserCert:Ljava/lang/String;
++ 
++     iput v1, p0, Landroid/net/wifi/WifiConfiguration;->wapiCertIndex:I
++ 
++     iput v1, p0, Landroid/net/wifi/WifiConfiguration;->wapiPskType:I
++ 
+      const/4 v1, 0x4
+  
+      new-array v1, v1, [Ljava/lang/String;
+***************
+*** 1563,1568 ****
+  
+      invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+  
+      iget-object v0, p0, Landroid/net/wifi/WifiConfiguration;->wepKeys:[Ljava/lang/String;
+  
+      .local v0, arr$:[Ljava/lang/String;
+--- 1639,1660 ----
+  
+      invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+  
++     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->wapiASCert:Ljava/lang/String;
++ 
++     invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
++ 
++     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->wapiUserCert:Ljava/lang/String;
++ 
++     invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
++ 
++     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->wapiPsk:Ljava/lang/String;
++ 
++     invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
++ 
++     iget v4, p0, Landroid/net/wifi/WifiConfiguration;->wapiPskType:I
++ 
++     invoke-virtual {p1, v4}, Landroid/os/Parcel;->writeInt(I)V
++ 
+      iget-object v0, p0, Landroid/net/wifi/WifiConfiguration;->wepKeys:[Ljava/lang/String;
+  
+      .local v0, arr$:[Ljava/lang/String;

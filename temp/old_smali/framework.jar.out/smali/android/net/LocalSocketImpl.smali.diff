@@ -1,0 +1,15 @@
+*** .//smali/android/net/LocalSocketImpl.smali	2014-06-23 03:13:35.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/net/LocalSocketImpl.smali	2014-06-23 03:11:19.000000000 +0300
+***************
+*** 362,367 ****
+--- 362,371 ----
+  
+      iput-object v0, p1, Landroid/net/LocalSocketImpl;->fd:Ljava/io/FileDescriptor;
+  
++     const/4 v0, 0x1
++ 
++     iput-boolean v0, p1, Landroid/net/LocalSocketImpl;->mFdCreatedInternally:Z
++ 
+      return-void
+  .end method
+  

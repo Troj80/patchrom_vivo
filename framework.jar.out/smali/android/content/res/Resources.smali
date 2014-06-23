@@ -246,7 +246,7 @@
     return-void
 .end method
 
-.method private constructor <init>()V
+.method constructor <init>()V
     .locals 4
 
     .prologue
@@ -719,6 +719,37 @@
     goto :goto_0
 .end method
 
+.method static clearPreloadedCache()V
+    .locals 2
+
+    .prologue
+    sget-object v0, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
+
+    const/4 v1, 0x0
+
+    aget-object v0, v0, v1
+
+    invoke-virtual {v0}, Landroid/util/LongSparseArray;->clear()V
+
+    sget-object v0, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
+
+    const/4 v1, 0x1
+
+    aget-object v0, v0, v1
+
+    invoke-virtual {v0}, Landroid/util/LongSparseArray;->clear()V
+
+    sget-object v0, Landroid/content/res/Resources;->sPreloadedColorStateLists:Landroid/util/LongSparseArray;
+
+    invoke-virtual {v0}, Landroid/util/LongSparseArray;->clear()V
+
+    sget-object v0, Landroid/content/res/Resources;->sPreloadedColorDrawables:Landroid/util/LongSparseArray;
+
+    invoke-virtual {v0}, Landroid/util/LongSparseArray;->clear()V
+
+    return-void
+.end method
+
 .method private getCachedColorStateList(J)Landroid/content/res/ColorStateList;
     .locals 4
     .parameter "key"
@@ -970,7 +1001,9 @@
 
     new-array v4, v4, [I
 
-    invoke-direct {v0, p0, v2, v4, p1}, Landroid/content/res/TypedArray;-><init>(Landroid/content/res/Resources;[I[II)V
+    invoke-static {p0, v2, v4, p1}, Landroid/content/res/Injector$ResourcesHook;->createTypedArray(Landroid/content/res/Resources;[I[II)Landroid/content/res/TypedArray;
+
+    move-result-object v0
 
     monitor-exit v3
     :try_end_1
@@ -3074,6 +3107,43 @@
     goto :goto_0
 .end method
 
+.method getPreloadedDrawable(JI)Landroid/graphics/drawable/Drawable$ConstantState;
+    .locals 3
+    .parameter "key"
+    .parameter "id"
+
+    .prologue
+    sget-object v1, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
+
+    iget-object v2, p0, Landroid/content/res/Resources;->mConfiguration:Landroid/content/res/Configuration;
+
+    invoke-virtual {v2}, Landroid/content/res/Configuration;->getLayoutDirection()I
+
+    move-result v2
+
+    aget-object v1, v1, v2
+
+    invoke-virtual {v1, p1, p2}, Landroid/util/LongSparseArray;->get(J)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/graphics/drawable/Drawable$ConstantState;
+
+    .local v0, cs:Landroid/graphics/drawable/Drawable$ConstantState;
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0, p3}, Landroid/content/res/Resources;->isPreloadOverlayed(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x0
+
+    :cond_0
+    return-object v0
+.end method
+
 .method public getPreloadedDrawables()Landroid/util/LongSparseArray;
     .locals 2
     .annotation system Ldalvik/annotation/Signature;
@@ -4160,6 +4230,25 @@
     return-object v0
 .end method
 
+.method isPreloadOverlayed(I)Z
+    .locals 1
+    .parameter "id"
+
+    .prologue
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method isPreloading()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Landroid/content/res/Resources;->mPreloading:Z
+
+    return v0
+.end method
+
 .method loadColorStateList(Landroid/util/TypedValue;I)Landroid/content/res/ColorStateList;
     .locals 12
     .parameter "value"
@@ -4819,27 +4908,13 @@
     .end local v7           #dr:Landroid/graphics/drawable/Drawable;
     .restart local v6       #dr:Landroid/graphics/drawable/Drawable;
     :cond_6
-    sget-object v17, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
-
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Landroid/content/res/Resources;->mConfiguration:Landroid/content/res/Configuration;
+    move/from16 v1, p2
 
-    move-object/from16 v18, v0
-
-    invoke-virtual/range {v18 .. v18}, Landroid/content/res/Configuration;->getLayoutDirection()I
-
-    move-result v18
-
-    aget-object v17, v17, v18
-
-    move-object/from16 v0, v17
-
-    invoke-virtual {v0, v12, v13}, Landroid/util/LongSparseArray;->get(J)Ljava/lang/Object;
+    invoke-virtual {v0, v12, v13, v1}, Landroid/content/res/Resources;->getPreloadedDrawable(JI)Landroid/graphics/drawable/Drawable$ConstantState;
 
     move-result-object v5
-
-    check-cast v5, Landroid/graphics/drawable/Drawable$ConstantState;
 
     .restart local v5       #cs:Landroid/graphics/drawable/Drawable$ConstantState;
     goto :goto_3
@@ -5083,9 +5158,9 @@
 
     move-object/from16 v1, p1
 
-    move-object/from16 v2, v17
+    move/from16 v2, p2
 
-    invoke-static {v0, v1, v10, v9, v2}, Landroid/graphics/drawable/Drawable;->createFromResourceStream(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/drawable/Drawable;
+    invoke-static {v0, v1, v10, v9, v2}, Landroid/content/res/Injector$ResourcesHook;->createFromResourceStream(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Ljava/lang/String;I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v6
 
@@ -5317,6 +5392,25 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto :goto_6
+.end method
+
+.method loadOverlayDrawable(Landroid/util/TypedValue;I)Landroid/graphics/drawable/Drawable;
+    .locals 1
+    .parameter "value"
+    .parameter "id"
+
+    .prologue
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method loadOverlayTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
+    .locals 0
+    .parameter "array"
+
+    .prologue
+    return-object p1
 .end method
 
 .method loadXmlResourceParser(ILjava/lang/String;)Landroid/content/res/XmlResourceParser;
@@ -5723,7 +5817,11 @@
 
     invoke-direct {v0, p0}, Landroid/content/res/Resources$Theme;-><init>(Landroid/content/res/Resources;)V
 
-    return-object v0
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->loadOverlayTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
+
+    move-result-object v3
+
+    return-object v3
 .end method
 
 .method public obtainAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
@@ -6887,7 +6985,13 @@
 
     invoke-virtual {v2, v3}, Landroid/content/res/Configuration;->updateFrom(Landroid/content/res/Configuration;)I
 
-    move-result v20
+    move-result v2
+
+    const/high16 v3, -0x8000
+
+    and-int v3, v3, v20
+
+    or-int v20, v2, v3
 
     .line 1632
     const v2, 0x8000

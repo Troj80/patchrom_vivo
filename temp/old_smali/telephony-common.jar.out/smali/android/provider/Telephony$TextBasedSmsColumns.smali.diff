@@ -1,0 +1,13 @@
+*** .//smali/android/provider/Telephony$TextBasedSmsColumns.smali	2014-06-23 03:15:04.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/telephony-common.jar.out/.//smali/android/provider/Telephony$TextBasedSmsColumns.smali	2014-06-23 03:12:41.000000000 +0300
+***************
+*** 53,58 ****
+--- 53,60 ----
+  
+  .field public static final SERVICE_CENTER:Ljava/lang/String; = "service_center"
+  
++ .field public static final SIM_ID:Ljava/lang/String; = "sim_id"
++ 
+  .field public static final STATUS:Ljava/lang/String; = "status"
+  
+  .field public static final STATUS_COMPLETE:I = 0x0

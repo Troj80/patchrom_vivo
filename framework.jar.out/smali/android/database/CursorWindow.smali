@@ -526,6 +526,8 @@
 
     .line 758
     .restart local v6       #pid:I
+    invoke-static {v0, v6}, Landroid/database/Injector$CursorWindowHook;->appendPackageName(Ljava/lang/StringBuilder;I)V
+
     if-ne v6, v3, :cond_2
 
     .line 759

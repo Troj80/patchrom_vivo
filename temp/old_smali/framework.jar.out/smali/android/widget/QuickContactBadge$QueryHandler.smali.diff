@@ -1,0 +1,17 @@
+*** .//smali/android/widget/QuickContactBadge$QueryHandler.smali	2014-06-23 03:14:25.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/widget/QuickContactBadge$QueryHandler.smali	2014-06-23 03:12:03.000000000 +0300
+***************
+*** 78,83 ****
+--- 78,89 ----
+      #calls: Landroid/widget/QuickContactBadge;->onContactUriChanged()V
+      invoke-static {v8}, Landroid/widget/QuickContactBadge;->access$100(Landroid/widget/QuickContactBadge;)V
+  
++     iget-object v8, p0, Landroid/widget/QuickContactBadge$QueryHandler;->this$0:Landroid/widget/QuickContactBadge;
++ 
++     invoke-static {v8, v7, v6, v2}, Landroid/widget/Injector$QuickContactBadgeHook;->showQuickContactForStranger(Landroid/widget/QuickContactBadge;ZLandroid/net/Uri;Landroid/net/Uri;)Landroid/net/Uri;
++ 
++     move-result-object v2
++ 
+      if-eqz v7, :cond_5
+  
+      if-eqz v6, :cond_5

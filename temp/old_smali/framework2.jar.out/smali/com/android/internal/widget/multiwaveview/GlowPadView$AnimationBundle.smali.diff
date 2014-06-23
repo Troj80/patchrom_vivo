@@ -1,0 +1,36 @@
+*** .//smali/com/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle.smali	2014-06-23 03:14:40.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework2.jar.out/.//smali/com/android/internal/widget/multiwaveview/GlowPadView$AnimationBundle.smali	2014-06-23 03:12:17.000000000 +0300
+***************
+*** 9,15 ****
+  .end annotation
+  
+  .annotation system Ldalvik/annotation/InnerClass;
+!     accessFlags = 0x2
+      name = "AnimationBundle"
+  .end annotation
+  
+--- 9,15 ----
+  .end annotation
+  
+  .annotation system Ldalvik/annotation/InnerClass;
+!     accessFlags = 0x0
+      name = "AnimationBundle"
+  .end annotation
+  
+***************
+*** 34,40 ****
+  
+  
+  # direct methods
+! .method private constructor <init>(Lcom/android/internal/widget/multiwaveview/GlowPadView;)V
+      .locals 0
+      .parameter
+  
+--- 34,40 ----
+  
+  
+  # direct methods
+! .method constructor <init>(Lcom/android/internal/widget/multiwaveview/GlowPadView;)V
+      .locals 0
+      .parameter
+  

@@ -1,0 +1,52 @@
+***************
+*** 1033,1046 ****
+      .local v0, ret:Landroid/content/res/Resources;
+      if-nez v0, :cond_0
+  
+!     new-instance v0, Landroid/content/res/Resources;
+  
+!     .end local v0           #ret:Landroid/content/res/Resources;
+!     invoke-direct {v0}, Landroid/content/res/Resources;-><init>()V
+  
+-     .restart local v0       #ret:Landroid/content/res/Resources;
+      sput-object v0, Landroid/content/res/Resources;->mSystem:Landroid/content/res/Resources;
+  
+      :cond_0
+      monitor-exit v2
+  
+--- 1066,1079 ----
+      .local v0, ret:Landroid/content/res/Resources;
+      if-nez v0, :cond_0
+  
+!     invoke-static {}, Landroid/content/res/Injector$ResourcesHook;->createResources()Landroid/content/res/Resources;
+  
+!     move-result-object v0
+  
+      sput-object v0, Landroid/content/res/Resources;->mSystem:Landroid/content/res/Resources;
+  
++     invoke-static {v0}, Landroid/content/res/Injector$ResourcesHook;->initResources(Landroid/content/res/Resources;)V
++ 
+      :cond_0
+      monitor-exit v2
+  
+***************
+*** 5795,5801 ****
+  
+      aput v4, v2, v4
+  
+!     return-object v0
+  .end method
+  
+  .method public openRawResource(I)Ljava/io/InputStream;
+--- 5893,5903 ----
+  
+      aput v4, v2, v4
+  
+!     invoke-virtual {p0, v0}, Landroid/content/res/Resources;->loadOverlayTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
+! 
+!     move-result-object v2
+! 
+!     return-object v2
+  .end method
+  
+  .method public openRawResource(I)Ljava/io/InputStream;

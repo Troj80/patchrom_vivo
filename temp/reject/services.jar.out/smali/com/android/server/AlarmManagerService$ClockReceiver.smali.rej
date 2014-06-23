@@ -1,0 +1,19 @@
+***************
+*** 41,46 ****
+  
+      invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+  
+      #getter for: Lcom/android/server/AlarmManagerService;->mContext:Landroid/content/Context;
+      invoke-static {p1}, Lcom/android/server/AlarmManagerService;->access$600(Lcom/android/server/AlarmManagerService;)Landroid/content/Context;
+  
+--- 41,50 ----
+  
+      invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+  
++     const/16 v1, 0x3e8
++ 
++     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->setPriority(I)V
++ 
+      #getter for: Lcom/android/server/AlarmManagerService;->mContext:Landroid/content/Context;
+      invoke-static {p1}, Lcom/android/server/AlarmManagerService;->access$600(Lcom/android/server/AlarmManagerService;)Landroid/content/Context;
+  

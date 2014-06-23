@@ -2880,6 +2880,15 @@
     :goto_0
     if-nez v0, :cond_0
 
+    invoke-static {p0}, Landroid/widget/Injector$SearchViewHook;->before_getDecoratedHint(Landroid/widget/SearchView;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_miui
+
+    return-object p1
+
+    :cond_miui
     iget-boolean v3, p0, Landroid/widget/SearchView;->mIconifiedByDefault:Z
 
     if-eqz v3, :cond_2
@@ -3512,6 +3521,24 @@
     return-void
 .end method
 
+.method getEmptyStateSet()[I
+    .locals 1
+
+    .prologue
+    sget-object v0, Landroid/widget/SearchView;->EMPTY_STATE_SET:[I
+
+    return-object v0
+.end method
+
+.method getFocusedStateSet()[I
+    .locals 1
+
+    .prologue
+    sget-object v0, Landroid/widget/SearchView;->FOCUSED_STATE_SET:[I
+
+    return-object v0
+.end method
+
 .method public getImeOptions()I
     .locals 1
 
@@ -3620,6 +3647,33 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method getQueryTextView()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/SearchView;->mQueryTextView:Landroid/widget/SearchView$SearchAutoComplete;
+
+    return-object v0
+.end method
+
+.method getSearchEditFrame()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/SearchView;->mSearchEditFrame:Landroid/view/View;
+
+    return-object v0
+.end method
+
+.method getSubmitArea()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/SearchView;->mSubmitArea:Landroid/view/View;
+
+    return-object v0
 .end method
 
 .method public getSuggestionsAdapter()Landroid/widget/CursorAdapter;

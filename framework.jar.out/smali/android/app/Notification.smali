@@ -141,6 +141,8 @@
 
 .field public deleteIntent:Landroid/app/PendingIntent;
 
+.field public extraNotification:Lmiui/app/ExtraNotification;
+
 .field public extras:Landroid/os/Bundle;
 
 .field public flags:I
@@ -1202,6 +1204,12 @@
 
     move-result v0
 
+    new-instance v1, Lmiui/app/ExtraNotification;
+
+    invoke-direct {v1}, Lmiui/app/ExtraNotification;-><init>()V
+
+    iput-object v1, p0, Landroid/app/Notification;->extraNotification:Lmiui/app/ExtraNotification;
+
     const/4 v1, -0x1
 
     if-ne v0, v1, :cond_0
@@ -1793,6 +1801,8 @@
 
     .line 980
     :goto_8
+    invoke-static {p0, p1, p2}, Landroid/app/Injector$NotificationHook;->after_writeToParcel(Landroid/app/Notification;Landroid/os/Parcel;I)V
+
     return-void
 
     .line 910

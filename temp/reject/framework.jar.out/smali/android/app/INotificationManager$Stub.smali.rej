@@ -1,0 +1,48 @@
+***************
+*** 626,631 ****
+  
+      goto/16 :goto_0
+  
+      nop
+  
+      :sswitch_data_0
+--- 628,666 ----
+  
+      goto/16 :goto_0
+  
++     .end local v1           #_arg0:Landroid/service/notification/INotificationListener;
++     .end local v8           #_result:[Landroid/service/notification/StatusBarNotification;
++     :sswitch_f
++     const-string v0, "android.app.INotificationManager"
++ 
++     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
++ 
++     invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
++ 
++     move-result-object v1
++ 
++     .local v1, _arg0:Ljava/lang/String;
++     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
++ 
++     move-result v2
++ 
++     .local v2, _arg1:I
++     invoke-virtual {p0, v1, v2}, Landroid/app/INotificationManager$Stub;->areNotificationsEnabled(Ljava/lang/String;I)Z
++ 
++     move-result v8
++ 
++     .local v8, _result:Z
++     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
++ 
++     if-eqz v8, :cond_4
++ 
++     move v3, v9
++ 
++     :cond_4
++     invoke-virtual {p3, v3}, Landroid/os/Parcel;->writeInt(I)V
++ 
++     goto/16 :goto_0
++ 
+      nop
+  
+      :sswitch_data_0

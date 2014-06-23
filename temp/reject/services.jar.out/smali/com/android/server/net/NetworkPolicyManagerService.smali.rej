@@ -1,0 +1,62 @@
+***************
+*** 1226,1231 ****
+      .parameter "totalBytes"
+  
+      .prologue
+      invoke-direct/range {p0 .. p2}, Lcom/android/server/net/NetworkPolicyManagerService;->buildNotificationTag(Landroid/net/NetworkPolicy;I)Ljava/lang/String;
+  
+      move-result-object v4
+--- 1230,1244 ----
+      .parameter "totalBytes"
+  
+      .prologue
++     invoke-static/range {p0 .. p2}, Lcom/android/server/net/Injector$NetworkPolicyManagerServiceHook;->before_enqueueNotification(Lcom/android/server/net/NetworkPolicyManagerService;Landroid/net/NetworkPolicy;I)Z
++ 
++     move-result v1
++ 
++     if-eqz v1, :cond_miui
++ 
++     return-void
++ 
++     :cond_miui
+      invoke-direct/range {p0 .. p2}, Lcom/android/server/net/NetworkPolicyManagerService;->buildNotificationTag(Landroid/net/NetworkPolicy;I)Ljava/lang/String;
+  
+      move-result-object v4
+***************
+*** 1409,1418 ****
+  
+      .restart local v16       #title:Ljava/lang/CharSequence;
+      :goto_2
+-     const/4 v1, 0x1
+- 
+-     invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;
+- 
+      const v1, 0x1080584
+  
+      invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+--- 1422,1427 ----
+  
+      .restart local v16       #title:Ljava/lang/CharSequence;
+      :goto_2
+      const v1, 0x1080584
+  
+      invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+***************
+*** 1544,1553 ****
+  
+      .restart local v16       #title:Ljava/lang/CharSequence;
+      :goto_3
+-     const/4 v1, 0x1
+- 
+-     invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;
+- 
+      const v1, 0x1080078
+  
+      invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+--- 1553,1558 ----
+  
+      .restart local v16       #title:Ljava/lang/CharSequence;
+      :goto_3
+      const v1, 0x1080078
+  
+      invoke-virtual {v10, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;

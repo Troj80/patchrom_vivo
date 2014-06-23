@@ -1,0 +1,41 @@
+***************
+*** 4062,4067 ****
+      .locals 3
+  
+      .prologue
+      iget-object v1, p0, Landroid/widget/SearchView;->mQueryTextView:Landroid/widget/SearchView$SearchAutoComplete;
+  
+      invoke-virtual {v1}, Landroid/widget/SearchView$SearchAutoComplete;->hasFocus()Z
+--- 4071,4085 ----
+      .locals 3
+  
+      .prologue
++     invoke-static {p0}, Landroid/widget/Injector$SearchViewHook;->updateFocusedState(Landroid/widget/SearchView;)Z
++ 
++     move-result v1
++ 
++     if-eqz v1, :cond_miui
++ 
++     return-void
++ 
++     :cond_miui
+      iget-object v1, p0, Landroid/widget/SearchView;->mQueryTextView:Landroid/widget/SearchView$SearchAutoComplete;
+  
+      invoke-virtual {v1}, Landroid/widget/SearchView$SearchAutoComplete;->hasFocus()Z
+***************
+*** 4347,4352 ****
+  
+      invoke-virtual {v1, v0}, Landroid/view/View;->setVisibility(I)V
+  
+      return-void
+  .end method
+  
+--- 4365,4372 ----
+  
+      invoke-virtual {v1, v0}, Landroid/view/View;->setVisibility(I)V
+  
++     invoke-static {p0}, Landroid/widget/Injector$SearchViewHook;->after_updateSubmitArea(Landroid/widget/SearchView;)V
++ 
+      return-void
+  .end method
+  

@@ -1,0 +1,24 @@
+***************
+*** 162,167 ****
+  
+      const/4 v5, 0x0
+  
+      iget-object v3, p0, Lcom/android/internal/widget/ActionBarContextView;->mTitleLayout:Landroid/widget/LinearLayout;
+  
+      if-nez v3, :cond_1
+--- 162,176 ----
+  
+      const/4 v5, 0x0
+  
++     invoke-virtual {p0}, Lcom/android/internal/widget/ActionBarContextView;->miuiInitTitle()Z
++ 
++     move-result v3
++ 
++     if-eqz v3, :cond_miui
++ 
++     return-void
++ 
++     :cond_miui
+      iget-object v3, p0, Lcom/android/internal/widget/ActionBarContextView;->mTitleLayout:Landroid/widget/LinearLayout;
+  
+      if-nez v3, :cond_1

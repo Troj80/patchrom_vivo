@@ -1,0 +1,17 @@
+***************
+*** 1586,1591 ****
+  
+      const/4 v5, 0x0
+  
+      const v7, 0x1020016
+  
+      invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+--- 1588,1595 ----
+  
+      const/4 v5, 0x0
+  
++     invoke-static {p0, p1}, Landroid/preference/Injector$PreferenceHook;->before_onBindView(Landroid/preference/Preference;Landroid/view/View;)V
++ 
+      const v7, 0x1020016
+  
+      invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;

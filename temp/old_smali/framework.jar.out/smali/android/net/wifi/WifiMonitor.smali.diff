@@ -1,0 +1,13 @@
+*** .//smali/android/net/wifi/WifiMonitor.smali	2014-06-23 03:13:39.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/net/wifi/WifiMonitor.smali	2014-06-23 03:11:23.000000000 +0300
+***************
+*** 180,185 ****
+--- 180,187 ----
+  
+  .field private static final UNKNOWN:I = 0xa
+  
++ .field private static final WAPI_EVENT_PREFIX_STR:Ljava/lang/String; = "WAPI:"
++ 
+  .field private static final WPA_EVENT_PREFIX_STR:Ljava/lang/String; = "WPA:"
+  
+  .field private static final WPA_RECV_ERROR_STR:Ljava/lang/String; = "recv error"

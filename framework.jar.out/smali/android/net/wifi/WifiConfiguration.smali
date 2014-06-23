@@ -47,6 +47,10 @@
 
 .field private static final TAG:Ljava/lang/String; = "WifiConfiguration"
 
+.field public static final WAPI_ASCII_PASSWORD:I = 0x0
+
+.field public static final WAPI_HEX_PASSWORD:I = 0x1
+
 .field public static final bssidVarName:Ljava/lang/String; = "bssid"
 
 .field public static final frequencyVarName:Ljava/lang/String; = "frequency"
@@ -60,6 +64,16 @@
 .field public static final pskVarName:Ljava/lang/String; = "psk"
 
 .field public static final ssidVarName:Ljava/lang/String; = "ssid"
+
+.field public static final wapiAsCertVarName:Ljava/lang/String; = "as_cert_file"
+
+.field public static final wapiCertIndexVarName:Ljava/lang/String; = "cert_index"
+
+.field public static final wapiPskTypeVarName:Ljava/lang/String; = "wapi_key_type"
+
+.field public static final wapiPskVarName:Ljava/lang/String; = "wapi_psk"
+
+.field public static final wapiUserCertVarName:Ljava/lang/String; = "user_cert_file"
 
 .field public static final wepKeyVarNames:[Ljava/lang/String; = null
 
@@ -104,6 +118,16 @@
 .field public proxySettings:Landroid/net/wifi/WifiConfiguration$ProxySettings;
 
 .field public status:I
+
+.field public wapiASCert:Ljava/lang/String;
+
+.field public wapiCertIndex:I
+
+.field public wapiPsk:Ljava/lang/String;
+
+.field public wapiPskType:I
+
+.field public wapiUserCert:Ljava/lang/String;
 
 .field public wepKeys:[Ljava/lang/String;
 
@@ -258,6 +282,16 @@
 
     .line 363
     :cond_0
+    const/4 v1, -0x1
+
+    iput-object v2, p0, Landroid/net/wifi/WifiConfiguration;->wapiASCert:Ljava/lang/String;
+
+    iput-object v2, p0, Landroid/net/wifi/WifiConfiguration;->wapiUserCert:Ljava/lang/String;
+
+    iput v1, p0, Landroid/net/wifi/WifiConfiguration;->wapiCertIndex:I
+
+    iput v1, p0, Landroid/net/wifi/WifiConfiguration;->wapiPskType:I
+
     new-instance v1, Landroid/net/wifi/WifiEnterpriseConfig;
 
     invoke-direct {v1}, Landroid/net/wifi/WifiEnterpriseConfig;-><init>()V
@@ -692,6 +726,36 @@
 
     .line 588
     :cond_4
+    iget-object v0, p0, Landroid/net/wifi/WifiConfiguration;->allowedKeyManagement:Ljava/util/BitSet;
+
+    const/4 v1, 0x5
+
+    invoke-virtual {v0, v1}, Ljava/util/BitSet;->get(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_miui_0
+
+    const/4 v0, 0x5
+
+    goto :goto_0
+
+    :cond_miui_0
+    iget-object v0, p0, Landroid/net/wifi/WifiConfiguration;->allowedKeyManagement:Ljava/util/BitSet;
+
+    const/4 v1, 0x6
+
+    invoke-virtual {v0, v1}, Ljava/util/BitSet;->get(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_miui_1
+
+    const/4 v0, 0x6
+
+    goto :goto_0
+
+    :cond_miui_1
     const/4 v0, 0x0
 
     goto :goto_0

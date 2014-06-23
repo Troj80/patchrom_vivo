@@ -1,0 +1,13 @@
+*** .//smali/android/app/LoadedApk.smali	2014-06-23 03:12:59.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/app/LoadedApk.smali	2014-06-23 03:10:40.000000000 +0300
+***************
+*** 1856,1861 ****
+--- 1856,1863 ----
+      iput-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
+  
+      :cond_0
++     invoke-static {p0, p1}, Landroid/app/Injector$LoadedApkHook;->after_getResources(Landroid/app/LoadedApk;Landroid/app/ActivityThread;)V
++ 
+      iget-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
+  
+      return-object v0

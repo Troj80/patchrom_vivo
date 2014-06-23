@@ -1,0 +1,19 @@
+*** .//smali/android/widget/Editor$TextViewPositionListener.smali	2014-06-23 03:14:23.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/widget/Editor$TextViewPositionListener.smali	2014-06-23 03:12:01.000000000 +0300
+***************
+*** 9,15 ****
+  .end annotation
+  
+  .annotation system Ldalvik/annotation/InnerClass;
+!     accessFlags = 0x60a
+      name = "TextViewPositionListener"
+  .end annotation
+  
+--- 9,15 ----
+  .end annotation
+  
+  .annotation system Ldalvik/annotation/InnerClass;
+!     accessFlags = 0x608
+      name = "TextViewPositionListener"
+  .end annotation
+  

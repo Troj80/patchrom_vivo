@@ -1,0 +1,22 @@
+*** .//smali/android/text/format/DateFormat.smali	2014-06-23 03:14:04.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/text/format/DateFormat.smali	2014-06-23 03:11:44.000000000 +0300
+***************
+*** 1345,1350 ****
+--- 1345,1361 ----
+      .parameter "context"
+  
+      .prologue
++     const/4 v5, 0x1
++ 
++     invoke-static {p0}, Landroid/text/format/Injector$DateFormatHook;->before_is24HourFormat(Landroid/content/Context;)Z
++ 
++     move-result v6
++ 
++     if-eqz v6, :cond_miui
++ 
++     return v5
++ 
++     :cond_miui
+      invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+  
+      move-result-object v5

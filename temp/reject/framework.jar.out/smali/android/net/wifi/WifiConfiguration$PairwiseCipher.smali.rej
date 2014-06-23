@@ -1,0 +1,17 @@
+***************
+*** 31,37 ****
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x3
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+--- 31,37 ----
+      .locals 3
+  
+      .prologue
+!     const/4 v0, 0x4
+  
+      new-array v0, v0, [Ljava/lang/String;
+  

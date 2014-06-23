@@ -1,0 +1,21 @@
+***************
+*** 479,484 ****
+  
+      iput-boolean v4, v1, Lcom/android/internal/telephony/CallerInfo;->contactExists:Z
+  
+      .end local v0           #columnIndex:I
+      :cond_6
+      invoke-interface {p2}, Landroid/database/Cursor;->close()V
+--- 489,500 ----
+  
+      iput-boolean v4, v1, Lcom/android/internal/telephony/CallerInfo;->contactExists:Z
+  
++     invoke-static {p0, v1, p2}, Lmiui/telephony/ExtraCallerInfo;->getExtraCallerInfo(Landroid/content/Context;Lcom/android/internal/telephony/CallerInfo;Landroid/database/Cursor;)Lmiui/telephony/ExtraCallerInfo;
++ 
++     move-result-object v3
++ 
++     iput-object v3, v1, Lcom/android/internal/telephony/CallerInfo;->extra:Lmiui/telephony/ExtraCallerInfo;
++ 
+      .end local v0           #columnIndex:I
+      :cond_6
+      invoke-interface {p2}, Landroid/database/Cursor;->close()V

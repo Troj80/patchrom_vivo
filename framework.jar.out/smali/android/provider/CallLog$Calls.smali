@@ -632,6 +632,33 @@
     throw v2
 .end method
 
+.method public static getExtraCallLogValues(Landroid/content/ContentValues;)Landroid/content/ContentValues;
+    .locals 2
+    .parameter "contentValues"
+
+    .prologue
+    sget-object v1, Landroid/provider/CallLog$Calls;->sExtraCallLogValues:Landroid/content/ContentValues;
+
+    if-nez v1, :cond_0
+
+    move-object v0, p0
+
+    .local v0, values:Landroid/content/ContentValues;
+    :goto_0
+    return-object v0
+
+    .end local v0           #values:Landroid/content/ContentValues;
+    :cond_0
+    sget-object v0, Landroid/provider/CallLog$Calls;->sExtraCallLogValues:Landroid/content/ContentValues;
+
+    .restart local v0       #values:Landroid/content/ContentValues;
+    const/4 v1, 0x0
+
+    sput-object v1, Landroid/provider/CallLog$Calls;->sExtraCallLogValues:Landroid/content/ContentValues;
+
+    goto :goto_0
+.end method
+
 .method public static getLastOutgoingCall(Landroid/content/Context;)Ljava/lang/String;
     .locals 7
     .parameter "context"
@@ -745,5 +772,15 @@
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
     .line 458
+    return-void
+.end method
+
+.method public static setExtraCallLogValues(Landroid/content/ContentValues;)V
+    .locals 0
+    .parameter "extraCallLogValues"
+
+    .prologue
+    sput-object p0, Landroid/provider/CallLog$Calls;->sExtraCallLogValues:Landroid/content/ContentValues;
+
     return-void
 .end method

@@ -1,0 +1,16 @@
+***************
+*** 690,695 ****
+          0xb -> :sswitch_b
+          0xc -> :sswitch_c
+          0xd -> :sswitch_d
+          0x5f4e5446 -> :sswitch_0
+      .end sparse-switch
+  .end method
+--- 715,721 ----
+          0xb -> :sswitch_b
+          0xc -> :sswitch_c
+          0xd -> :sswitch_d
++         0x2a -> :sswitch_2a
+          0x5f4e5446 -> :sswitch_0
+      .end sparse-switch
+  .end method

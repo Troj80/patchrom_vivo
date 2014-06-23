@@ -1,0 +1,19 @@
+***************
+*** 38,43 ****
+      .parameter "msg"
+  
+      .prologue
+      const/4 v1, 0x0
+  
+      .local v1, appErrorIntent:Landroid/content/Intent;
+--- 38,47 ----
+      .parameter "msg"
+  
+      .prologue
++     iget-object v3, p0, Lcom/android/server/am/AppNotRespondingDialog$1;->this$0:Lcom/android/server/am/AppNotRespondingDialog;
++ 
++     invoke-static {v3}, Lcom/android/server/am/Injector$AppNotRespondingDialogHook;->sendAnrErrorReport(Lcom/android/server/am/AppNotRespondingDialog;)V
++ 
+      const/4 v1, 0x0
+  
+      .local v1, appErrorIntent:Landroid/content/Intent;

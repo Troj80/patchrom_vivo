@@ -1,0 +1,24 @@
+***************
+*** 948,953 ****
+      .parameter "packageName"
+  
+      .prologue
+      :try_start_0
+      invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+  
+--- 962,976 ----
+      .parameter "packageName"
+  
+      .prologue
++     invoke-static {p0, p1}, Landroid/app/Injector$ActivityManagerHook;->before_forceStopPackage(Landroid/app/ActivityManager;Ljava/lang/String;)Z
++ 
++     move-result v0
++ 
++     if-eqz v0, :cond_0
++ 
++     goto :goto_0
++ 
++     :cond_0
+      :try_start_0
+      invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+  

@@ -117,6 +117,8 @@
 
     sput-object v0, Landroid/net/wifi/WifiConfigStore;->ipConfigFile:Ljava/lang/String;
 
+    invoke-static {p0, p1}, Landroid/net/wifi/Injector$WifiConfigStoreHook;->after_WifiConfigStore(Landroid/net/wifi/WifiConfigStore;Landroid/content/Context;)V
+
     return-void
 .end method
 
@@ -4082,6 +4084,82 @@
     :cond_c
     iget-object v11, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
 
+    const-string v12, "as_cert_file"
+
+    invoke-virtual {v11, v7, v12}, Landroid/net/wifi/WifiNative;->getNetworkVariable(ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v11
+
+    if-nez v11, :cond_miui_0
+
+    iput-object v10, p1, Landroid/net/wifi/WifiConfiguration;->wapiASCert:Ljava/lang/String;
+
+    :goto_miui_0
+    iget-object v11, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
+
+    const-string v12, "user_cert_file"
+
+    invoke-virtual {v11, v7, v12}, Landroid/net/wifi/WifiNative;->getNetworkVariable(ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v11
+
+    if-nez v11, :cond_miui_1
+
+    iput-object v10, p1, Landroid/net/wifi/WifiConfiguration;->wapiUserCert:Ljava/lang/String;
+
+    :goto_miui_1
+    iget-object v11, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
+
+    const-string v12, "wapi_key_type"
+
+    invoke-virtual {v11, v7, v12}, Landroid/net/wifi/WifiNative;->getNetworkVariable(ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v11
+
+    if-nez v11, :cond_miui_3
+
+    :try_start_miui
+    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v11
+
+    iput v11, p1, Landroid/net/wifi/WifiConfiguration;->wapiPskType:I
+    :try_end_miui
+    .catch Ljava/lang/NumberFormatException; {:try_start_miui .. :try_end_miui} :catch_miui
+
+    :cond_miui_3
+    :goto_miui_3
+    iget-object v11, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
+
+    const-string v12, "wapi_psk"
+
+    invoke-virtual {v11, v7, v12}, Landroid/net/wifi/WifiNative;->getNetworkVariable(ILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v11
+
+    if-nez v11, :cond_miui_2
+
+    iput-object v10, p1, Landroid/net/wifi/WifiConfiguration;->wapiPsk:Ljava/lang/String;
+
+    :goto_miui_2
+    iget-object v11, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
+
     const-string/jumbo v12, "psk"
 
     invoke-virtual {v11, v7, v12}, Landroid/net/wifi/WifiNative;->getNetworkVariable(ILjava/lang/String;)Ljava/lang/String;
@@ -4575,6 +4653,11 @@
     .end local v2           #i:I
     .end local v3           #i$:I
     .end local v6           #len$:I
+    :catch_miui
+    move-exception v11
+
+    goto/16 :goto_miui_3
+
     :catch_0
     move-exception v11
 
@@ -5943,13 +6026,21 @@
 
     .line 223
     .local v0, config:Landroid/net/wifi/WifiConfiguration;
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_miui_0
 
     iget v3, v0, Landroid/net/wifi/WifiConfiguration;->status:I
 
     const/4 v4, 0x1
 
-    if-ne v3, v4, :cond_0
+    if-ne v3, v4, :cond_miui_0
+
+    iget-object v3, v0, Landroid/net/wifi/WifiConfiguration;->SSID:Ljava/lang/String;
+
+    invoke-static {v3}, Landroid/net/wifi/Injector$WifiConfigStoreHook;->isDisableByUser(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_miui_0
 
     .line 224
     iget-object v3, p0, Landroid/net/wifi/WifiConfigStore;->mWifiNative:Landroid/net/wifi/WifiNative;
@@ -7523,6 +7614,8 @@
     const/4 v1, 0x0
 
     iput v1, v0, Landroid/net/wifi/WifiConfiguration;->status:I
+
+    invoke-static {v0}, Landroid/net/wifi/Injector$WifiConfigStoreHook;->disConnect(Landroid/net/wifi/WifiConfiguration;)V
 
     goto :goto_0
 

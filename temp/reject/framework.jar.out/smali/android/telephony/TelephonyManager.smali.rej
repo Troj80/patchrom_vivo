@@ -1,0 +1,19 @@
+***************
+*** 2715,2723 ****
+      .locals 1
+  
+      .prologue
+!     const-string v0, "gsm.sim.operator.numeric"
+! 
+!     invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+  
+      move-result-object v0
+  
+--- 2724,2730 ----
+      .locals 1
+  
+      .prologue
+!     invoke-static {p0}, Landroid/telephony/Injector$TelephonyManagerHook;->getSimOperator(Landroid/telephony/TelephonyManager;)Ljava/lang/String;
+  
+      move-result-object v0
+  

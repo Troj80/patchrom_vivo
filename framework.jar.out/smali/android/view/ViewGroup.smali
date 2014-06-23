@@ -124,6 +124,8 @@
     .end annotation
 .end field
 
+.field mChildSequenceStateTaggingListener:Landroid/view/ViewGroup$ChildSequenceStateTaggingListener;
+
 .field private mChildTransformation:Landroid/view/animation/Transformation;
 
 .field private mChildren:[Landroid/view/View;
@@ -229,6 +231,8 @@
 .field protected mPersistentDrawingCache:I
 
 .field mSuppressLayout:Z
+
+.field mTagChildrenSequenceState:Z
 
 .field private mTransition:Landroid/animation/LayoutTransition;
 
@@ -590,6 +594,8 @@
     .line 3655
     :cond_1
     :goto_0
+    invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->tagChildSequenceState(Landroid/view/ViewGroup;)V
+
     return-void
 
     .line 3638
@@ -2993,6 +2999,8 @@
     .line 3678
     :cond_2
     :goto_1
+    invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->tagChildSequenceState(Landroid/view/ViewGroup;)V
+
     return-void
 
     .line 3666
@@ -3157,6 +3165,8 @@
     sub-int/2addr v4, v5
 
     iput v4, p0, Landroid/view/ViewGroup;->mChildrenCount:I
+
+    invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->tagChildSequenceState(Landroid/view/ViewGroup;)V
 
     goto :goto_0
 .end method
@@ -4338,6 +4348,7 @@
     :goto_0
     return v0
 
+    :goto_miui
     :cond_0
     const/4 v0, 0x0
 
@@ -4967,6 +4978,11 @@
     add-int/lit8 v2, v2, -0x1
 
     goto :goto_0
+
+    :cond_miui
+    invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->clearChildFocus(Landroid/view/ViewGroup;)V
+
+    goto :goto_miui
 .end method
 
 .method protected detachViewFromParent(I)V
@@ -10923,6 +10939,15 @@
     return v0
 .end method
 
+.method getFocused()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ViewGroup;->mFocused:Landroid/view/View;
+
+    return-object v0
+.end method
+
 .method public getFocusedChild()Landroid/view/View;
     .locals 1
 
@@ -13117,6 +13142,8 @@
     .line 5076
     .end local v0           #child:Landroid/view/View;
     :cond_1
+    invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->tagChildSequenceState(Landroid/view/ViewGroup;)V
+
     return-void
 .end method
 
@@ -15900,6 +15927,16 @@
     invoke-direct {p0, v0, p1}, Landroid/view/ViewGroup;->setBooleanFlag(IZ)V
 
     .line 4728
+    return-void
+.end method
+
+.method public setChildSequenceStateTaggingListener(Landroid/view/ViewGroup$ChildSequenceStateTaggingListener;)V
+    .locals 0
+    .parameter "listener"
+
+    .prologue
+    iput-object p1, p0, Landroid/view/ViewGroup;->mChildSequenceStateTaggingListener:Landroid/view/ViewGroup$ChildSequenceStateTaggingListener;
+
     return-void
 .end method
 

@@ -1,0 +1,21 @@
+***************
+*** 3171,3178 ****
+  
+      invoke-virtual {v0}, Lcom/android/server/power/Notifier;->onScreenOn()V
+  
+-     :cond_0
+      :goto_1
+      return-void
+  
+      :cond_1
+--- 3289,3298 ----
+  
+      invoke-virtual {v0}, Lcom/android/server/power/Notifier;->onScreenOn()V
+  
+      :goto_1
++     invoke-static {p1}, Lcom/android/server/power/PowerManagerService$Injector;->setScreenOn(Z)V
++ 
++     :cond_0
+      return-void
+  
+      :cond_1

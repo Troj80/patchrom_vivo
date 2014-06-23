@@ -226,6 +226,10 @@
     .line 33
     invoke-direct {p0, p1, p2}, Landroid/net/LocalSocketImpl;->write_native(ILjava/io/FileDescriptor;)V
 
+    const/4 v0, 0x1
+
+    iput-boolean v0, p1, Landroid/net/LocalSocketImpl;->mFdCreatedInternally:Z
+
     return-void
 .end method
 

@@ -1,0 +1,40 @@
+***************
+*** 495,500 ****
+  
+      invoke-virtual {v0, v4}, Landroid/widget/CompoundButton;->setChecked(Z)V
+  
+      if-eqz p1, :cond_6
+  
+      const/4 v1, 0x0
+--- 504,517 ----
+  
+      invoke-virtual {v0, v4}, Landroid/widget/CompoundButton;->setChecked(Z)V
+  
++     iget-object v4, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mItemData:Lcom/android/internal/view/menu/MenuItemImpl;
++ 
++     invoke-virtual {v4}, Lcom/android/internal/view/menu/MenuItemImpl;->isChecked()Z
++ 
++     move-result v4
++ 
++     invoke-static {p0, v4}, Lcom/android/internal/view/menu/Injector$ListMenuItemViewHook;->checkTextColor(Lcom/android/internal/view/menu/ListMenuItemView;Z)V
++ 
+      if-eqz p1, :cond_6
+  
+      const/4 v1, 0x0
+***************
+*** 593,598 ****
+      :goto_0
+      invoke-virtual {v0, p1}, Landroid/widget/CompoundButton;->setChecked(Z)V
+  
+      return-void
+  
+      .end local v0           #compoundButton:Landroid/widget/CompoundButton;
+--- 610,617 ----
+      :goto_0
+      invoke-virtual {v0, p1}, Landroid/widget/CompoundButton;->setChecked(Z)V
+  
++     invoke-static {p0, p1}, Lcom/android/internal/view/menu/Injector$ListMenuItemViewHook;->after_setChecked(Lcom/android/internal/view/menu/ListMenuItemView;Z)V
++ 
+      return-void
+  
+      .end local v0           #compoundButton:Landroid/widget/CompoundButton;

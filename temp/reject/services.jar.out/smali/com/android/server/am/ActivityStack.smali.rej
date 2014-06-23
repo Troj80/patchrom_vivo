@@ -1,0 +1,17 @@
+***************
+*** 11674,11679 ****
+      .parameter "options"
+  
+      .prologue
+      move-object/from16 v0, p1
+  
+      iget-object v0, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+--- 11693,11700 ----
+      .parameter "options"
+  
+      .prologue
++     invoke-static {}, Lcom/android/server/am/Injector$ActivityStackHook;->before_startActivityLocked()V
++ 
+      move-object/from16 v0, p1
+  
+      iget-object v0, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;

@@ -1,0 +1,13 @@
+*** .//smali/android/webkit/WebView.smali	2014-06-23 03:14:20.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/webkit/WebView.smali	2014-06-23 03:11:58.000000000 +0300
+***************
+*** 168,173 ****
+--- 168,175 ----
+  
+      invoke-static {}, Landroid/webkit/CookieSyncManager;->setGetInstanceIsAllowed()V
+  
++     invoke-static {p1}, Lmiui/content/res/ThemeFontChangeHelper;->markWebViewCreated(Landroid/content/Context;)V
++ 
+      return-void
+  
+      :cond_1

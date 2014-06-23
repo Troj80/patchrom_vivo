@@ -1,0 +1,70 @@
+***************
+*** 1811,1816 ****
+      :goto_0
+      iput-object v0, p0, Landroid/view/View;->mInputEventConsistencyVerifier:Landroid/view/InputEventConsistencyVerifier;
+  
+      iput-object v1, p0, Landroid/view/View;->mResources:Landroid/content/res/Resources;
+  
+      return-void
+--- 1815,1822 ----
+      :goto_0
+      iput-object v0, p0, Landroid/view/View;->mInputEventConsistencyVerifier:Landroid/view/InputEventConsistencyVerifier;
+  
++     iput v2, p0, Landroid/view/View;->mAdditionalState:I
++ 
+      iput-object v1, p0, Landroid/view/View;->mResources:Landroid/content/res/Resources;
+  
+      return-void
+***************
+*** 1901,1906 ****
+      :goto_0
+      iput-object v1, p0, Landroid/view/View;->mInputEventConsistencyVerifier:Landroid/view/InputEventConsistencyVerifier;
+  
+      iput-object p1, p0, Landroid/view/View;->mContext:Landroid/content/Context;
+  
+      if-eqz p1, :cond_0
+--- 1907,1914 ----
+      :goto_0
+      iput-object v1, p0, Landroid/view/View;->mInputEventConsistencyVerifier:Landroid/view/InputEventConsistencyVerifier;
+  
++     iput v4, p0, Landroid/view/View;->mAdditionalState:I
++ 
+      iput-object p1, p0, Landroid/view/View;->mContext:Landroid/content/Context;
+  
+      if-eqz p1, :cond_0
+***************
+*** 30596,30601 ****
+      return v0
+  
+      :cond_1
+      and-int/lit8 v1, p2, 0x1
+  
+      if-nez v1, :cond_2
+--- 30660,30669 ----
+      return v0
+  
+      :cond_1
++     iget-object v1, p0, Landroid/view/View;->mAttachInfo:Landroid/view/View$AttachInfo;
++ 
++     if-eqz v1, :cond_0
++ 
+      and-int/lit8 v1, p2, 0x1
+  
+      if-nez v1, :cond_2
+***************
+*** 34936,34941 ****
+      :goto_0
+      invoke-virtual {p0, v0, v1}, Landroid/view/View;->setFlags(II)V
+  
+      return-void
+  
+      :cond_0
+--- 35025,35032 ----
+      :goto_0
+      invoke-virtual {p0, v0, v1}, Landroid/view/View;->setFlags(II)V
+  
++     iput-boolean p1, p0, Landroid/view/View;->mHapticEnabledExplicitly:Z
++ 
+      return-void
+  
+      :cond_0

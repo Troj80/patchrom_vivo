@@ -1,0 +1,87 @@
+***************
+*** 2416,2421 ****
+      :cond_1
+      invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
+  
+      return-void
+  
+      :pswitch_data_0
+--- 2422,2429 ----
+      :cond_1
+      invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
+  
++     invoke-static {p0, p1, p2}, Landroid/view/Injector$ViewGroupHook;->after_initFromAttributes(Landroid/view/ViewGroup;Landroid/content/Context;Landroid/util/AttributeSet;)V
++ 
+      return-void
+  
+      :pswitch_data_0
+***************
+*** 4353,4360 ****
+  
+      .local v2, i:I
+      :goto_0
+!     if-ltz v2, :cond_0
+! 
+      aget-object v3, v0, v2
+  
+      iput-object v4, v3, Landroid/view/View;->mParent:Landroid/view/ViewParent;
+--- 4366,4373 ----
+  
+      .local v2, i:I
+      :goto_0
+!     if-ltz v2, :cond_miui
+!  
+      aget-object v3, v0, v2
+  
+      iput-object v4, v3, Landroid/view/View;->mParent:Landroid/view/ViewParent;
+***************
+*** 4976,4981 ****
+      .prologue
+      invoke-direct {p0, p1}, Landroid/view/ViewGroup;->removeFromArray(I)V
+  
+      return-void
+  .end method
+  
+--- 4994,5001 ----
+      .prologue
+      invoke-direct {p0, p1}, Landroid/view/ViewGroup;->removeFromArray(I)V
+  
++     invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->clearChildFocus(Landroid/view/ViewGroup;)V
++ 
+      return-void
+  .end method
+  
+***************
+*** 4990,4995 ****
+  
+      invoke-direct {p0, v0}, Landroid/view/ViewGroup;->removeFromArray(I)V
+  
+      return-void
+  .end method
+  
+--- 5010,5017 ----
+  
+      invoke-direct {p0, v0}, Landroid/view/ViewGroup;->removeFromArray(I)V
+  
++     invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->clearChildFocus(Landroid/view/ViewGroup;)V
++ 
+      return-void
+  .end method
+  
+***************
+*** 5001,5006 ****
+      .prologue
+      invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup;->removeFromArray(II)V
+  
+      return-void
+  .end method
+  
+--- 5023,5030 ----
+      .prologue
+      invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup;->removeFromArray(II)V
+  
++     invoke-static {p0}, Landroid/view/Injector$ViewGroupHook;->clearChildFocus(Landroid/view/ViewGroup;)V
++ 
+      return-void
+  .end method
+  

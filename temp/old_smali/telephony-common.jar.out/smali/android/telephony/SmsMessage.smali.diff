@@ -1,0 +1,20 @@
+*** .//smali/android/telephony/SmsMessage.smali	2014-06-23 03:15:04.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/telephony-common.jar.out/.//smali/android/telephony/SmsMessage.smali	2014-06-23 03:12:41.000000000 +0300
+***************
+*** 924,929 ****
+--- 924,938 ----
+      .end packed-switch
+  .end method
+  
++ .method public getMessageSimId()I
++     .locals 1
++ 
++     .prologue
++     const/4 v0, 0x0
++ 
++     return v0
++ .end method
++ 
+  .method public getOriginatingAddress()Ljava/lang/String;
+      .locals 1
+  

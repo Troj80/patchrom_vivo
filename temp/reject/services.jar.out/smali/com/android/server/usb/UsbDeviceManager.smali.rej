@@ -1,0 +1,16 @@
+***************
+*** 1357,1362 ****
+      .locals 2
+  
+      .prologue
+      iget-object v0, p0, Lcom/android/server/usb/UsbDeviceManager;->mDebuggingManager:Lcom/android/server/usb/UsbDebuggingManager;
+  
+      if-eqz v0, :cond_0
+--- 1357,1363 ----
+      .locals 2
+  
+      .prologue
++     return-void
+      iget-object v0, p0, Lcom/android/server/usb/UsbDeviceManager;->mDebuggingManager:Lcom/android/server/usb/UsbDebuggingManager;
+  
+      if-eqz v0, :cond_0

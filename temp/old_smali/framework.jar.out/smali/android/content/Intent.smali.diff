@@ -1,0 +1,19 @@
+*** .//smali/android/content/Intent.smali	2014-06-23 03:13:04.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/content/Intent.smali	2014-06-23 03:10:46.000000000 +0300
+***************
+*** 5085,5091 ****
+      .prologue
+      iget v0, p0, Landroid/content/Intent;->mFlags:I
+  
+!     and-int/lit8 v0, v0, 0x30
+  
+      const/16 v1, 0x10
+  
+--- 5085,5091 ----
+      .prologue
+      iget v0, p0, Landroid/content/Intent;->mFlags:I
+  
+!     and-int/lit8 v0, v0, 0x10
+  
+      const/16 v1, 0x10
+  

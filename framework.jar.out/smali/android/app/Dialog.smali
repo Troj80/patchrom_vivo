@@ -542,6 +542,8 @@
     iget-object v1, p0, Landroid/app/Dialog;->mDecor:Landroid/view/View;
 
     invoke-interface {v0, v1}, Landroid/view/WindowManager;->removeViewImmediate(Landroid/view/View;)V
+
+    invoke-static {p0}, Landroid/app/Injector$DialogHook;->onWindowHide(Landroid/app/Dialog;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -954,6 +956,32 @@
     move-result-object v0
 
     return-object v0
+.end method
+
+.method public getMiuiActionBar()Lmiui/v5/app/MiuiActionBar;
+    .locals 2
+
+    .prologue
+    invoke-virtual {p0}, Landroid/app/Dialog;->getActionBar()Landroid/app/ActionBar;
+
+    move-result-object v0
+
+    .local v0, bar:Landroid/app/ActionBar;
+    instance-of v1, v0, Lmiui/v5/app/MiuiActionBar;
+
+    if-eqz v1, :cond_0
+
+    check-cast v0, Lmiui/v5/app/MiuiActionBar;
+
+    .end local v0           #bar:Landroid/app/ActionBar;
+    :goto_0
+    return-object v0
+
+    .restart local v0       #bar:Landroid/app/ActionBar;
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method public final getOwnerActivity()Landroid/app/Activity;
@@ -2393,6 +2421,8 @@
 
     .line 289
     invoke-direct {p0}, Landroid/app/Dialog;->sendShowMessage()V
+
+    invoke-static {p0}, Landroid/app/Injector$DialogHook;->after_show(Landroid/app/Dialog;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

@@ -1,0 +1,24 @@
+***************
+*** 12596,12601 ****
+      throw v0
+  .end method
+  
+  .method public getAccounts(I)[Landroid/accounts/Account;
+      .locals 7
+      .parameter "userId"
+--- 12598,12612 ----
+      throw v0
+  .end method
+  
++ .method getAccountAuthenticatorCache()Lcom/android/server/accounts/IAccountAuthenticatorCache;
++     .locals 1
++ 
++     .prologue
++     iget-object v0, p0, Lcom/android/server/accounts/AccountManagerService;->mAuthenticatorCache:Lcom/android/server/accounts/IAccountAuthenticatorCache;
++ 
++     return-object v0
++ .end method
++ 
+  .method public getAccounts(I)[Landroid/accounts/Account;
+      .locals 7
+      .parameter "userId"

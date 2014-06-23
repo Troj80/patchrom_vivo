@@ -1,0 +1,126 @@
+***************
+*** 772,782 ****
+  
+      sput v0, Landroid/media/AudioService;->sSoundEffectVolumeDb:I
+  
+!     new-instance v0, Landroid/view/VolumePanel;
+  
+!     invoke-direct {v0, p1, p0}, Landroid/view/VolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
+  
+!     iput-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
+  
+      iput v6, p0, Landroid/media/AudioService;->mForcedUseForComm:I
+  
+--- 772,782 ----
+  
+      sput v0, Landroid/media/AudioService;->sSoundEffectVolumeDb:I
+  
+!     new-instance v0, Lmiui/view/VolumePanel;
+  
+!     invoke-direct {v0, p1, p0}, Lmiui/view/VolumePanel;-><init>(Landroid/content/Context;Landroid/media/AudioService;)V
+  
+!     iput-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+  
+      iput v6, p0, Landroid/media/AudioService;->mForcedUseForComm:I
+  
+***************
+*** 7157,7165 ****
+      .parameter "flags"
+  
+      .prologue
+!     iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
+  
+!     invoke-virtual {v0, p2}, Landroid/view/VolumePanel;->postMasterMuteChanged(I)V
+  
+      invoke-direct {p0, p1}, Landroid/media/AudioService;->broadcastMasterMuteStatus(Z)V
+  
+--- 7157,7165 ----
+      .parameter "flags"
+  
+      .prologue
+!     iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+  
+!     invoke-virtual {v0, p2}, Lmiui/view/VolumePanel;->postMasterMuteChanged(I)V
+  
+      invoke-direct {p0, p1}, Landroid/media/AudioService;->broadcastMasterMuteStatus(Z)V
+  
+***************
+*** 7173,7181 ****
+      .parameter "newVolume"
+  
+      .prologue
+!     iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
+  
+!     invoke-virtual {v1, p1}, Landroid/view/VolumePanel;->postMasterVolumeChanged(I)V
+  
+      new-instance v0, Landroid/content/Intent;
+  
+--- 7173,7181 ----
+      .parameter "newVolume"
+  
+      .prologue
+!     iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+  
+!     invoke-virtual {v1, p1}, Lmiui/view/VolumePanel;->postMasterVolumeChanged(I)V
+  
+      new-instance v0, Landroid/content/Intent;
+  
+***************
+*** 7288,7296 ****
+      const/4 p1, 0x5
+  
+      :cond_0
+!     iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
+  
+!     invoke-virtual {v1, p1, p4}, Landroid/view/VolumePanel;->postVolumeChanged(II)V
+  
+      and-int/lit8 v1, p4, 0x20
+  
+--- 7288,7296 ----
+      const/4 p1, 0x5
+  
+      :cond_0
+!     iget-object v1, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+  
+!     invoke-virtual {v1, p1, p4}, Lmiui/view/VolumePanel;->postVolumeChanged(II)V
+  
+      and-int/lit8 v1, p4, 0x20
+  
+***************
+*** 11069,11074 ****
+  
+      invoke-interface {v12, v5, v13}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
+  
+      .end local v4           #h:Landroid/media/AudioService$SetModeDeathHandler;
+      :cond_2
+      const/4 v10, 0x0
+--- 11069,11076 ----
+  
+      invoke-interface {v12, v5, v13}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
+  
++     const/4 v5, 0x0
++ 
+      .end local v4           #h:Landroid/media/AudioService$SetModeDeathHandler;
+      :cond_2
+      const/4 v10, 0x0
+***************
+*** 11750,11758 ****
+  
+      if-nez v0, :cond_7
+  
+!     iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Landroid/view/VolumePanel;
+  
+!     invoke-virtual {v0, p3}, Landroid/view/VolumePanel;->postDisplaySafeVolumeWarning(I)V
+  
+      new-instance v0, Landroid/media/AudioService$StreamVolumeCommand;
+  
+--- 11752,11760 ----
+  
+      if-nez v0, :cond_7
+  
+!     iget-object v0, p0, Landroid/media/AudioService;->mVolumePanel:Lmiui/view/VolumePanel;
+  
+!     invoke-virtual {v0, p3}, Lmiui/view/VolumePanel;->postDisplaySafeVolumeWarning(I)V
+  
+      new-instance v0, Landroid/media/AudioService$StreamVolumeCommand;
+  

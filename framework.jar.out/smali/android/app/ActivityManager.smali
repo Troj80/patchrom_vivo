@@ -103,6 +103,8 @@
 
 .field public static final START_FORWARD_AND_REQUEST_CONFLICT:I = -0x3
 
+.field public static final START_INCOMPATIBLE:I = 0x5
+
 .field public static final START_INTENT_NOT_RESOLVED:I = -0x1
 
 .field public static final START_NOT_ACTIVITY:I = -0x5
@@ -734,6 +736,18 @@
     goto :goto_0
 .end method
 
+.method public static isHighEndGfx(Landroid/view/Display;)Z
+    .locals 1
+    .parameter "display"
+
+    .prologue
+    invoke-static {}, Landroid/app/ActivityManager;->isHighEndGfx()Z
+
+    move-result v0
+
+    return v0
+.end method
+
 .method public static isLowRamDeviceStatic()Z
     .locals 3
 
@@ -1203,6 +1217,15 @@
     const/4 v1, 0x0
 
     goto :goto_0
+.end method
+
+.method getContext()Landroid/content/Context;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/ActivityManager;->mContext:Landroid/content/Context;
+
+    return-object v0
 .end method
 
 .method public getDeviceConfigurationInfo()Landroid/content/pm/ConfigurationInfo;

@@ -1,0 +1,42 @@
+***************
+*** 524,529 ****
+  
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
+      const/4 v0, 0x2
+  
+      new-array v0, v0, [I
+--- 526,533 ----
+  
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  
++     iput-boolean v2, p0, Landroid/view/ViewRootImpl;->mSkipResizedMsg:Z
++ 
+      const/4 v0, 0x2
+  
+      new-array v0, v0, [I
+***************
+*** 14498,14507 ****
+      move-object/from16 v0, p0
+  
+      iput-object v3, v0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
+      :try_end_0
+      .catchall {:try_start_0 .. :try_end_0} :catchall_0
+  
+-     :cond_6
+      :try_start_1
+      move-object/from16 v0, p0
+  
+--- 14552,14563 ----
+      move-object/from16 v0, p0
+  
+      iput-object v3, v0, Landroid/view/ViewRootImpl;->mInputChannel:Landroid/view/InputChannel;
++ 
++     :cond_6
++     invoke-virtual/range {p0 .. p0}, Landroid/view/ViewRootImpl;->createInputChannelAnyWay()V
+      :try_end_0
+      .catchall {:try_start_0 .. :try_end_0} :catchall_0
+  
+      :try_start_1
+      move-object/from16 v0, p0
+  

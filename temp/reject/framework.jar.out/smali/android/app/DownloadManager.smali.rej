@@ -1,0 +1,65 @@
+***************
+*** 110,116 ****
+      .locals 3
+  
+      .prologue
+!     const/16 v0, 0x10
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+--- 110,116 ----
+      .locals 3
+  
+      .prologue
+!     const/16 v0, 0xf
+  
+      new-array v0, v0, [Ljava/lang/String;
+  
+***************
+*** 617,635 ****
+  
+      invoke-virtual {v2, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+  
+-     const-string v4, "allow_write"
+- 
+-     if-eqz p9, :cond_3
+- 
+-     const/4 v3, 0x1
+- 
+-     :goto_2
+-     invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+- 
+-     move-result-object v3
+- 
+-     invoke-virtual {v2, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+- 
+      iget-object v3, p0, Landroid/app/DownloadManager;->mResolver:Landroid/content/ContentResolver;
+  
+      sget-object v4, Landroid/provider/Downloads$Impl;->CONTENT_URI:Landroid/net/Uri;
+--- 611,616 ----
+  
+      invoke-virtual {v2, v4, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+  
+      iget-object v3, p0, Landroid/app/DownloadManager;->mResolver:Landroid/content/ContentResolver;
+  
+      sget-object v4, Landroid/provider/Downloads$Impl;->CONTENT_URI:Landroid/net/Uri;
+***************
+*** 657,667 ****
+  
+      goto :goto_1
+  
+-     :cond_3
+-     const/4 v3, 0x0
+- 
+-     goto :goto_2
+- 
+      .restart local v0       #downloadUri:Landroid/net/Uri;
+      :cond_4
+      invoke-virtual {v0}, Landroid/net/Uri;->getLastPathSegment()Ljava/lang/String;
+--- 638,643 ----
+  
+      goto :goto_1
+  
+      .restart local v0       #downloadUri:Landroid/net/Uri;
+      :cond_4
+      invoke-virtual {v0}, Landroid/net/Uri;->getLastPathSegment()Ljava/lang/String;

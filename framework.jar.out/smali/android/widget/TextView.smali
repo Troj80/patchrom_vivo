@@ -8288,7 +8288,7 @@
 .end method
 
 .method private setText(Ljava/lang/CharSequence;Landroid/widget/TextView$BufferType;ZI)V
-    .locals 22
+    .locals 23
     .parameter "text"
     .parameter "type"
     .parameter "notifyBefore"
@@ -8316,6 +8316,23 @@
 
     .line 3689
     :cond_1
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Landroid/widget/TextView;->mText:Ljava/lang/CharSequence;
+
+    move-object/from16 v0, p1
+
+    invoke-virtual {v0, v4}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    const/16 v22, 0x0
+
+    if-nez v4, :cond_miui
+
+    const/16 v22, 0x1
+
+    :cond_miui
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Landroid/widget/TextView;->mUserSetTextScaleX:Z
@@ -8624,7 +8641,7 @@
 
     move-object/from16 v0, v17
 
-    invoke-static {v0, v4}, Landroid/text/util/Linkify;->addLinks(Landroid/text/Spannable;I)Z
+    invoke-static {v0, v4}, Lmiui/text/util/Linkify;->addLinks(Landroid/text/Spannable;I)Z
 
     move-result v4
 
@@ -9009,6 +9026,8 @@
 
     .line 3816
     :cond_19
+    if-eqz v22, :cond_miui_0
+
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
@@ -20663,6 +20682,7 @@
 
     const/4 v3, 0x1
 
+    :cond_miui_0
     const/4 v4, 0x0
 
     .line 5597
@@ -25545,6 +25565,45 @@
     return-void
 .end method
 
+.method public setCursorDrawableRes(I)V
+    .locals 3
+    .parameter "cursorDrawableRes"
+
+    .prologue
+    iput p1, p0, Landroid/widget/TextView;->mCursorDrawableRes:I
+
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+
+    iget v1, v1, Landroid/widget/Editor;->mCursorCount:I
+
+    if-ge v0, v1, :cond_0
+
+    iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+
+    iget-object v1, v1, Landroid/widget/Editor;->mCursorDrawable:[Landroid/graphics/drawable/Drawable;
+
+    const/4 v2, 0x0
+
+    aput-object v2, v1, v0
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+
+    const/4 v2, 0x0
+
+    iput v2, v1, Landroid/widget/Editor;->mCursorCount:I
+
+    return-void
+.end method
+
 .method protected setCursorPosition_internal(II)V
     .locals 1
     .parameter "start"
@@ -27670,6 +27729,16 @@
     invoke-direct {p0, p1, v0, v0}, Landroid/widget/TextView;->applySingleLine(ZZZ)V
 
     .line 7081
+    return-void
+.end method
+
+.method public final setSoftInputShownOnFocus(Z)V
+    .locals 0
+    .parameter "show"
+
+    .prologue
+    invoke-virtual {p0, p1}, Landroid/widget/TextView;->setShowSoftInputOnFocus(Z)V
+
     return-void
 .end method
 

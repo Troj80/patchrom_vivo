@@ -26,6 +26,8 @@
 
 .field public static final FILE_TYPE_APE:I = 0x132
 
+.field public static final FILE_TYPE_APE:I = 0x3e9
+
 .field public static final FILE_TYPE_ASF:I = 0x1a
 
 .field public static final FILE_TYPE_AVI:I = 0x1d
@@ -67,6 +69,8 @@
 .field public static final FILE_TYPE_MKA:I = 0x9
 
 .field public static final FILE_TYPE_MKV:I = 0x1b
+
+.field public static final FILE_TYPE_MOV:I = 0xca
 
 .field public static final FILE_TYPE_MP2PS:I = 0xc8
 
@@ -1346,6 +1350,15 @@
     .parameter "fileType"
 
     .prologue
+    invoke-static {p0}, Landroid/media/Injector$MediaFileHook;->isAudioFileType(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_miui_0
+
+    return v1
+
+    :cond_miui_0
     const/4 v0, 0x1
 
     .line 286

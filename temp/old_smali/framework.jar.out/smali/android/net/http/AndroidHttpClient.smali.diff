@@ -1,0 +1,15 @@
+*** .//smali/android/net/http/AndroidHttpClient.smali	2014-06-23 03:13:33.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/net/http/AndroidHttpClient.smali	2014-06-23 03:11:18.000000000 +0300
+***************
+*** 475,480 ****
+--- 475,484 ----
+  
+      const v8, 0xea60
+  
++     invoke-static {p0, p1}, Landroid/net/http/Injector$AndroidHttpClientHook;->before_newInstance(Ljava/lang/String;Landroid/content/Context;)Ljava/lang/String;
++ 
++     move-result-object p0
++ 
+      new-instance v1, Lorg/apache/http/params/BasicHttpParams;
+  
+      invoke-direct {v1}, Lorg/apache/http/params/BasicHttpParams;-><init>()V

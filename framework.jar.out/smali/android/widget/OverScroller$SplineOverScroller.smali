@@ -49,6 +49,8 @@
 
 .field private mDeceleration:F
 
+.field private mDecelerationScale:F
+
 .field private mDuration:I
 
 .field private mFinal:I
@@ -72,6 +74,8 @@
 .field private mStartTime:J
 
 .field private mState:I
+
+.field private mTotalOverDistance:I
 
 .field private mVelocity:I
 
@@ -1190,7 +1194,7 @@
 .end method
 
 .method private startBounceAfterEdge(III)V
-    .locals 1
+    .locals 2
     .parameter "start"
     .parameter "end"
     .parameter "velocity"
@@ -1255,6 +1259,10 @@
     invoke-static {v0}, Landroid/widget/OverScroller$SplineOverScroller;->getDeceleration(I)F
 
     move-result v1
+
+    iget v2, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDecelerationScale:F
+
+    mul-float/2addr v1, v2
 
     iput v1, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDeceleration:F
 
@@ -1390,6 +1398,140 @@
     goto :goto_0
 
     .line 874
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+        :pswitch_2
+    .end packed-switch
+.end method
+
+.method continueWhenFinished(Z)Z
+    .locals 8
+    .parameter "springOverScrollEnable"
+
+    .prologue
+    const/4 v3, 0x0
+
+    const/4 v0, 0x0
+
+    .local v0, force:Z
+    iget v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mState:I
+
+    packed-switch v4, :pswitch_data_0
+
+    :goto_0
+    invoke-virtual {p0, v0}, Landroid/widget/OverScroller$SplineOverScroller;->update(Z)Z
+
+    const/4 v3, 0x1
+
+    :cond_0
+    :pswitch_0
+    return v3
+
+    :pswitch_1
+    iget v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDuration:I
+
+    iget v5, p0, Landroid/widget/OverScroller$SplineOverScroller;->mSplineDuration:I
+
+    if-ge v4, v5, :cond_0
+
+    iget v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mFinal:I
+
+    iput v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStart:I
+
+    iget v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mCurrVelocity:F
+
+    float-to-int v3, v3
+
+    iput v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mVelocity:I
+
+    iget v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mVelocity:I
+
+    invoke-static {v3}, Landroid/widget/OverScroller$SplineOverScroller;->getDeceleration(I)F
+
+    move-result v3
+
+    iput v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDeceleration:F
+
+    iget-wide v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStartTime:J
+
+    iget v5, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDuration:I
+
+    int-to-long v5, v5
+
+    add-long/2addr v3, v5
+
+    iput-wide v3, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStartTime:J
+
+    invoke-direct {p0}, Landroid/widget/OverScroller$SplineOverScroller;->onEdgeReached()V
+
+    goto :goto_0
+
+    :pswitch_2
+    if-eqz p1, :cond_1
+
+    iget v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mOver:I
+
+    invoke-static {v4}, Ljava/lang/Math;->abs(I)I
+
+    move-result v4
+
+    int-to-float v4, v4
+
+    iget v5, p0, Landroid/widget/OverScroller$SplineOverScroller;->mTotalOverDistance:I
+
+    int-to-float v5, v5
+
+    div-float v2, v4, v5
+
+    .local v2, t:F
+    float-to-double v4, v2
+
+    const-wide/high16 v6, 0x4008
+
+    invoke-static {v4, v5, v6, v7}, Ljava/lang/Math;->pow(DD)D
+
+    move-result-wide v4
+
+    const-wide/high16 v6, 0x4034
+
+    mul-double/2addr v4, v6
+
+    double-to-float v4, v4
+
+    const/high16 v5, 0x3f80
+
+    add-float v1, v4, v5
+
+    .local v1, scale:F
+    iput v1, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDecelerationScale:F
+
+    const/4 v0, 0x1
+
+    .end local v1           #scale:F
+    .end local v2           #t:F
+    :cond_1
+    iget-wide v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStartTime:J
+
+    iget v6, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDuration:I
+
+    int-to-long v6, v6
+
+    add-long/2addr v4, v6
+
+    iput-wide v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStartTime:J
+
+    iget v4, p0, Landroid/widget/OverScroller$SplineOverScroller;->mFinal:I
+
+    iget v5, p0, Landroid/widget/OverScroller$SplineOverScroller;->mStart:I
+
+    invoke-direct {p0, v4, v5, v3}, Landroid/widget/OverScroller$SplineOverScroller;->startSpringback(III)V
+
+    goto :goto_0
+
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -1629,6 +1771,16 @@
     return-void
 .end method
 
+.method setDecelerationScale(F)V
+    .locals 0
+    .parameter "scale"
+
+    .prologue
+    iput p1, p0, Landroid/widget/OverScroller$SplineOverScroller;->mDecelerationScale:F
+
+    return-void
+.end method
+
 .method setFinalPosition(I)V
     .locals 1
     .parameter "position"
@@ -1655,6 +1807,16 @@
     iput p1, p0, Landroid/widget/OverScroller$SplineOverScroller;->mFlingFriction:F
 
     .line 642
+    return-void
+.end method
+
+.method setTotalOverDistance(I)V
+    .locals 0
+    .parameter "distance"
+
+    .prologue
+    iput p1, p0, Landroid/widget/OverScroller$SplineOverScroller;->mTotalOverDistance:I
+
     return-void
 .end method
 

@@ -1,0 +1,50 @@
+***************
+*** 50,58 ****
+  
+      const/4 v0, -0x1
+  
+!     iget v2, p1, Landroid/text/util/LinkSpec;->start:I
+  
+!     iget v3, p2, Landroid/text/util/LinkSpec;->start:I
+  
+      if-ge v2, v3, :cond_1
+  
+--- 50,58 ----
+  
+      const/4 v0, -0x1
+  
+!     iget v2, p1, Landroid/text/util/Linkify$LinkSpec;->start:I
+  
+!     iget v3, p2, Landroid/text/util/Linkify$LinkSpec;->start:I
+  
+      if-ge v2, v3, :cond_1
+  
+***************
+*** 107,119 ****
+      .parameter "x1"
+  
+      .prologue
+!     check-cast p1, Landroid/text/util/LinkSpec;
+  
+      .end local p1
+!     check-cast p2, Landroid/text/util/LinkSpec;
+  
+      .end local p2
+!     invoke-virtual {p0, p1, p2}, Landroid/text/util/Linkify$4;->compare(Landroid/text/util/LinkSpec;Landroid/text/util/LinkSpec;)I
+  
+      move-result v0
+  
+--- 107,119 ----
+      .parameter "x1"
+  
+      .prologue
+!     check-cast p1, Landroid/text/util/Linkify$LinkSpec;
+  
+      .end local p1
+!     check-cast p2, Landroid/text/util/Linkify$LinkSpec;
+  
+      .end local p2
+!     invoke-virtual {p0, p1, p2}, Landroid/text/util/Linkify$4;->compare(Landroid/text/util/Linkify$LinkSpec;Landroid/text/util/Linkify$LinkSpec;)I
+  
+      move-result v0
+  

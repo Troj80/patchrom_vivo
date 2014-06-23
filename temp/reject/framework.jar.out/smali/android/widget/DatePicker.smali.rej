@@ -1,0 +1,21 @@
+***************
+*** 1327,1332 ****
+  
+      aput-object v2, v1, v0
+  
+      add-int/lit8 v0, v0, 0x1
+  
+      goto :goto_0
+--- 1349,1360 ----
+  
+      aput-object v2, v1, v0
+  
++     iget-object v1, p0, Landroid/widget/DatePicker;->mShortMonths:[Ljava/lang/String;
++ 
++     add-int/lit8 v2, v0, 0x0
++ 
++     invoke-static {v1, v0, v2}, Landroid/widget/Injector$DatePickerHook;->setShorMonthDisplayedValue([Ljava/lang/String;II)V
++ 
+      add-int/lit8 v0, v0, 0x1
+  
+      goto :goto_0

@@ -1,0 +1,46 @@
+***************
+*** 2317,2322 ****
+  
+      invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  
+      iget v1, p0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+  
+      if-eqz v1, :cond_5
+--- 2338,2355 ----
+  
+      invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  
++     const-string v1, " extfl=#"
++ 
++     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++ 
++     iget v1, p0, Landroid/view/WindowManager$LayoutParams;->extraFlags:I
++ 
++     invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
++ 
++     move-result-object v1
++ 
++     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
++ 
+      iget v1, p0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+  
+      if-eqz v1, :cond_5
+***************
+*** 2612,2617 ****
+  
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+  
+      iget v0, p0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+  
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+--- 2645,2654 ----
+  
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+  
++     iget v0, p0, Landroid/view/WindowManager$LayoutParams;->extraFlags:I
++ 
++     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
++ 
+      iget v0, p0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+  
+      invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V

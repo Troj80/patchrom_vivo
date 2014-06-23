@@ -1,0 +1,34 @@
+***************
+*** 425,430 ****
+      :try_start_0
+      invoke-static {}, Lcom/android/internal/os/SamplingProfilerIntegration;->start()V
+  
+      invoke-static {}, Lcom/android/internal/os/ZygoteInit;->registerZygoteSocket()V
+  
+      const/16 v2, 0xbcc
+--- 425,432 ----
+      :try_start_0
+      invoke-static {}, Lcom/android/internal/os/SamplingProfilerIntegration;->start()V
+  
++     invoke-static {}, Lmiui/security/SecurityManager;->init()V
++ 
+      invoke-static {}, Lcom/android/internal/os/ZygoteInit;->registerZygoteSocket()V
+  
+      const/16 v2, 0xbcc
+***************
+*** 1591,1596 ****
+  
+      invoke-static {v6, v7}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
+      invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+  
+      move-result-wide v4
+--- 1669,1676 ----
+  
+      invoke-static {v6, v7}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+  
++     invoke-static {}, Lcom/android/internal/os/ZygoteInit;->preloadMiuiResources()V
++ 
+      invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+  
+      move-result-wide v4

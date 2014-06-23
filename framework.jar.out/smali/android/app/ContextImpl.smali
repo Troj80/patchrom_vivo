@@ -2011,6 +2011,21 @@
     throw v0
 .end method
 
+.method static registerMiuiServices()V
+    .locals 2
+
+    .prologue
+    const-string v0, "security"
+
+    new-instance v1, Landroid/app/ContextImpl$SecurityServiceFetcher;
+
+    invoke-direct {v1}, Landroid/app/ContextImpl$SecurityServiceFetcher;-><init>()V
+
+    invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
+
+    return-void
+.end method
+
 .method private registerReceiverInternal(Landroid/content/BroadcastReceiver;ILandroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;Landroid/content/Context;)Landroid/content/Intent;
     .locals 9
     .parameter "receiver"
@@ -2074,6 +2089,8 @@
     .restart local v3       #rd:Landroid/content/IIntentReceiver;
     :cond_1
     :goto_0
+    invoke-static {p0, p3}, Landroid/app/Injector$ContextImplHook;->checkPriority(Landroid/app/ContextImpl;Landroid/content/IntentFilter;)V
+
     :try_start_0
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 

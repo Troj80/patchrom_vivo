@@ -1,0 +1,42 @@
+***************
+*** 4261,4267 ****
+  
+      invoke-interface {v3}, Landroid/app/ITransientNotification;->show()V
+  
+!     invoke-direct {p0, v2}, Lcom/android/server/NotificationManagerService;->scheduleTimeoutLocked(Lcom/android/server/NotificationManagerService$ToastRecord;)V
+      :try_end_0
+      .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+  
+--- 4272,4280 ----
+  
+      invoke-interface {v3}, Landroid/app/ITransientNotification;->show()V
+  
+!     const/4 v3, 0x0
+! 
+!     invoke-direct {p0, v2, v3}, Lcom/android/server/NotificationManagerService;->scheduleTimeoutLocked(Lcom/android/server/NotificationManagerService$ToastRecord;Z)V
+      :try_end_0
+      .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+  
+***************
+*** 4571,4576 ****
+  
+      iget v1, p0, Lcom/android/server/NotificationManagerService;->mDefaultNotificationLedOff:I
+  
+      :cond_4
+      iget-boolean v5, p0, Lcom/android/server/NotificationManagerService;->mNotificationPulseEnabled:Z
+  
+--- 4584,4597 ----
+  
+      iget v1, p0, Lcom/android/server/NotificationManagerService;->mDefaultNotificationLedOff:I
+  
++     invoke-static {p0, v3}, Lcom/android/server/Injector$NotificationManagerServiceHook;->updateNotificationLight(Lcom/android/server/NotificationManagerService;Landroid/app/Notification;)V
++ 
++     iget v0, v3, Landroid/app/Notification;->ledARGB:I
++ 
++     iget v2, v3, Landroid/app/Notification;->ledOnMS:I
++ 
++     iget v1, v3, Landroid/app/Notification;->ledOffMS:I
++ 
+      :cond_4
+      iget-boolean v5, p0, Lcom/android/server/NotificationManagerService;->mNotificationPulseEnabled:Z
+  

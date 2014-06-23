@@ -108,6 +108,8 @@
 
 .field private mParseError:I
 
+.field private mParseFlags:I
+
 .field private mParseInstrumentationArgs:Landroid/content/pm/PackageParser$ParsePackageItemArgs;
 
 .field private mParseProviderArgs:Landroid/content/pm/PackageParser$ParseComponentArgs;
@@ -8546,6 +8548,14 @@
 
     .line 3707
     .local v7, priority:I
+    move-object/from16 v0, p0
+
+    iget v13, v0, Landroid/content/pm/PackageParser;->mParseFlags:I
+
+    invoke-static {v13, v7}, Landroid/content/pm/Injector$PackageParserHook;->checkPriority(II)I
+
+    move-result v7
+
     move-object/from16 v0, p5
 
     invoke-virtual {v0, v7}, Landroid/content/pm/PackageParser$IntentInfo;->setPriority(I)V
@@ -14472,13 +14482,13 @@
     .local v15, providerExportedDefault:Z
     move-object/from16 v0, p1
 
-    iget-object v2, v0, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    move/from16 v1, p5
 
-    iget v2, v2, Landroid/content/pm/ApplicationInfo;->targetSdkVersion:I
+    invoke-static {v0, v1}, Landroid/content/pm/Injector$PackageParserHook;->providerShouldExport(Landroid/content/pm/PackageParser$Package;I)Z
 
-    const/16 v3, 0x11
+    move-result v2
 
-    if-ge v2, v3, :cond_3
+    if-eqz v2, :cond_3
 
     .line 3140
     const/4 v15, 0x1

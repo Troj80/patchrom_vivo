@@ -1,0 +1,40 @@
+***************
+*** 246,251 ****
+  
+      iget-object v8, p0, Landroid/widget/TimePicker;->mMinuteSpinner:Landroid/widget/NumberPicker;
+  
+      const v9, 0x10202e9
+  
+      invoke-virtual {v8, v9}, Landroid/widget/NumberPicker;->findViewById(I)Landroid/view/View;
+--- 246,259 ----
+  
+      iget-object v8, p0, Landroid/widget/TimePicker;->mMinuteSpinner:Landroid/widget/NumberPicker;
+  
++     new-instance v9, Landroid/widget/TimePicker$OnMinuteChangeListener;
++ 
++     invoke-direct {v9, p0}, Landroid/widget/TimePicker$OnMinuteChangeListener;-><init>(Landroid/widget/TimePicker;)V
++ 
++     invoke-virtual {v8, v9}, Landroid/widget/NumberPicker;->setOnValueChangedListener(Landroid/widget/NumberPicker$OnValueChangeListener;)V
++ 
++     iget-object v8, p0, Landroid/widget/TimePicker;->mMinuteSpinner:Landroid/widget/NumberPicker;
++ 
+      const v9, 0x10202e9
+  
+      invoke-virtual {v8, v9}, Landroid/widget/NumberPicker;->findViewById(I)Landroid/view/View;
+***************
+*** 1895,1900 ****
+      .parameter "is24HourView"
+  
+      .prologue
+      iget-boolean v1, p0, Landroid/widget/TimePicker;->mIs24HourView:Z
+  
+      invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
+--- 1921,1928 ----
+      .parameter "is24HourView"
+  
+      .prologue
++     invoke-static {p0, p1}, Landroid/widget/Injector$TimePickerHook;->before_setIs24HourView(Landroid/widget/TimePicker;Ljava/lang/Boolean;)V
++ 
+      iget-boolean v1, p0, Landroid/widget/TimePicker;->mIs24HourView:Z
+  
+      invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z

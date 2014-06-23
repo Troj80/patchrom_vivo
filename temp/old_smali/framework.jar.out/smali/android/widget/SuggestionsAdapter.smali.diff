@@ -1,0 +1,21 @@
+*** .//smali/android/widget/SuggestionsAdapter.smali	2014-06-23 03:14:28.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/widget/SuggestionsAdapter.smali	2014-06-23 03:12:06.000000000 +0300
+***************
+*** 338,346 ****
+      move-result-object v4
+  
+      .local v4, pkg:Ljava/lang/String;
+!     iget-object v7, v0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+! 
+!     invoke-virtual {v5, v4, v3, v7}, Landroid/content/pm/PackageManager;->getDrawable(Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
+  
+      move-result-object v1
+  
+--- 338,344 ----
+      move-result-object v4
+  
+      .local v4, pkg:Ljava/lang/String;
+!     invoke-static {v5, v4, v3, v0}, Landroid/widget/Injector$SuggestionsAdapterHook;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ActivityInfo;)Landroid/graphics/drawable/Drawable;
+  
+      move-result-object v1
+  

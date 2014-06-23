@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0xa
+    accessFlags = 0x8
     name = "CursorTranslator"
 .end annotation
 
@@ -441,6 +441,17 @@
 
 
 # virtual methods
+.method callGetLocalUri()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    invoke-direct {p0}, Landroid/app/DownloadManager$CursorTranslator;->getLocalUri()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method public getInt(I)I
     .locals 2
     .parameter "columnIndex"
@@ -518,7 +529,7 @@
 
     move-result v0
 
-    invoke-direct {p0, v0}, Landroid/app/DownloadManager$CursorTranslator;->translateStatus(I)I
+    invoke-static {v0}, Landroid/app/DownloadManager$CursorTranslator;->translateStatus(I)I
 
     move-result v0
 
@@ -553,7 +564,7 @@
 
     if-eqz v0, :cond_0
 
-    invoke-direct {p0}, Landroid/app/DownloadManager$CursorTranslator;->getLocalUri()Ljava/lang/String;
+    invoke-static {p0}, Landroid/app/Injector$DownloadManagerHook$CursorTranslator;->getLocalUri(Landroid/app/DownloadManager$CursorTranslator;)Ljava/lang/String;
 
     move-result-object v0
 

@@ -1,0 +1,13 @@
+*** .//smali/android/accounts/ChooseTypeAndAccountActivity.smali	2014-06-23 03:12:51.000000000 +0300
+--- /Users/troj80/patchrom/patchrom_vivo/temp/new_smali/framework.jar.out/.//smali/android/accounts/ChooseTypeAndAccountActivity.smali	2014-06-23 03:10:31.000000000 +0300
+***************
+*** 825,830 ****
+--- 825,832 ----
+      invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+  
+      .local v0, intent:Landroid/content/Intent;
++     invoke-static {v0}, Landroid/accounts/Injector$ChooseTypeAndAccountActivityHook;->useMiuiChooseAccountTypeActivity(Landroid/content/Intent;)V
++ 
+      const/high16 v1, 0x8
+  
+      invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;

@@ -197,17 +197,11 @@
 
     const/16 v1, 0xd
 
-    const-string v2, "allow_write"
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xe
-
     const-string v2, "\'placeholder\' AS local_uri"
 
     aput-object v2, v0, v1
 
-    const/16 v1, 0xf
+    const/16 v1, 0xe
 
     const-string v2, "\'placeholder\' AS reason"
 
@@ -767,6 +761,15 @@
     .line 956
     .local v1, id:J
     return-wide v1
+.end method
+
+.method getBaseUri()Landroid/net/Uri;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/DownloadManager;->mBaseUri:Landroid/net/Uri;
+
+    return-object v0
 .end method
 
 .method public getDownloadUri(J)Landroid/net/Uri;

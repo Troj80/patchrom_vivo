@@ -1,0 +1,40 @@
+***************
+*** 593,598 ****
+  
+      iput-object v2, v0, Lcom/android/server/ConnectivityService;->mUserIntentReceiver:Landroid/content/BroadcastReceiver;
+  
+      const-string v2, "ConnectivityService starting up"
+  
+      invoke-static {v2}, Lcom/android/server/ConnectivityService;->log(Ljava/lang/String;)V
+--- 593,600 ----
+  
+      iput-object v2, v0, Lcom/android/server/ConnectivityService;->mUserIntentReceiver:Landroid/content/BroadcastReceiver;
+  
++     invoke-static/range {p1 .. p1}, Lcom/android/server/Injector$ConnectivityServiceHook;->before_ConnectivityService(Landroid/content/Context;)V
++ 
+      const-string v2, "ConnectivityService starting up"
+  
+      invoke-static {v2}, Lcom/android/server/ConnectivityService;->log(Ljava/lang/String;)V
+***************
+*** 17409,17417 ****
+      :try_end_8
+      .catchall {:try_start_8 .. :try_end_8} :catchall_2
+  
+      if-ltz v13, :cond_d
+  
+-     :try_start_9
+      move-object/from16 v0, p0
+  
+      iget-object v0, v0, Lcom/android/server/ConnectivityService;->mHandler:Lcom/android/server/ConnectivityService$InternalHandler;
+--- 17439,17449 ----
+      :try_end_8
+      .catchall {:try_start_8 .. :try_end_8} :catchall_2
+  
++     :try_start_9
++     invoke-static/range {v20 .. v20}, Lcom/android/server/Injector$ConnectivityServiceHook;->startUsingNetworkFeature(I)V
++ 
+      if-ltz v13, :cond_d
+  
+      move-object/from16 v0, p0
+  
+      iget-object v0, v0, Lcom/android/server/ConnectivityService;->mHandler:Lcom/android/server/ConnectivityService$InternalHandler;

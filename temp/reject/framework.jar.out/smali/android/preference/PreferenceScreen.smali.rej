@@ -1,0 +1,27 @@
+***************
+*** 168,175 ****
+  
+      move-result-object v0
+  
+      invoke-virtual {p1, v0}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
+  
+      invoke-virtual {p0}, Landroid/preference/PreferenceScreen;->onAttachedToActivity()V
+  
+      return-void
+--- 168,183 ----
+  
+      move-result-object v0
+  
++     invoke-static {p1, v0}, Landroid/preference/Injector$PreferenceScreenHook;->addHeaderView(Landroid/widget/ListView;Landroid/widget/ListAdapter;)V
++ 
++     invoke-virtual {p0}, Landroid/preference/PreferenceScreen;->getRootAdapter()Landroid/widget/ListAdapter;
++ 
++     move-result-object v0
++ 
+      invoke-virtual {p1, v0}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
+  
++     invoke-static {p1}, Landroid/preference/Injector$PreferenceScreenHook;->bind(Landroid/widget/ListView;)V
++ 
+      invoke-virtual {p0}, Landroid/preference/PreferenceScreen;->onAttachedToActivity()V
+  
+      return-void
